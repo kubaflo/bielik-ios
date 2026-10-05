@@ -1,0 +1,20 @@
+# Build outputs
+bin/
+obj/
+*.binlog
+
+# Local model weights and Python caches
+*.gguf
+__pycache__/
+*.py[cod]
+
+# User-specific files
+.vs/
+.idea/
+*.user
+*.suo
+.env
+.env.*
+
+# OS-generated files
+.DS_Store
