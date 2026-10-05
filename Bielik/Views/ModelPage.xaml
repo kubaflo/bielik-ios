@@ -50,6 +50,9 @@
             </Grid>
             <VerticalStackLayout Spacing="12">
                 <Label Text="Stworzony tutaj." Style="{StaticResource SectionTitle}" SemanticProperties.HeadingLevel="Level2" />
+                <Image Source="official_speakleash.png" Aspect="AspectFit" WidthRequest="234" HeightRequest="45"
+                       HorizontalOptions="Start" AutomationId="official-creator-logo-model"
+                       SemanticProperties.Description="Oficjalne logo SpeakLeash, twórców Bielika" />
                 <Label Text="Bielik jest rozwijany przez Fundację SpeakLeash i społeczność. Język polski, jego niuanse i nasz kontekst kulturowy są w centrum tego projektu."
                        FontSize="14" TextColor="{StaticResource Muted}" LineHeight="1.3" />
             </VerticalStackLayout>

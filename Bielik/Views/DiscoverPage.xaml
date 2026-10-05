@@ -90,6 +90,9 @@
                     </VerticalStackLayout>
                 </Grid>
             </Border>
+            <Image Source="official_speakleash.png" Aspect="AspectFit" WidthRequest="198" HeightRequest="38"
+                   HorizontalOptions="Center" AutomationId="official-creator-logo-discover"
+                   SemanticProperties.Description="Oficjalne logo SpeakLeash, twórców Bielika" />
             <Label Text="Zainspirowane bielik.ai · Nieoficjalna aplikacja&#10;Model rozwijany przez Fundację SpeakLeash i społeczność."
                    Style="{StaticResource Caption}" FontSize="10" HorizontalTextAlignment="Center" />
         </VerticalStackLayout>

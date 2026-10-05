@@ -1,6 +1,6 @@
 # Bielik for iOS
 
-A native, Polish-language .NET 11 MAUI companion inspired by [bielik.ai](https://bielik.ai/). Four screens cover discovery, streamed chat, the selected model, and local connection settings. The artwork is original; this is an unofficial application, not a SpeakLeash product.
+A native, Polish-language .NET 11 MAUI companion inspired by [bielik.ai](https://bielik.ai/). Four screens cover discovery, streamed chat, the selected model, and local connection settings. Original artwork is complemented by officially published SpeakLeash branding; this is an unofficial application, not a SpeakLeash product.
 
 **Only local Bielik is used.** The pinned model is `hf.co/speakleash/Bielik-11B-v2.6-Instruct-GGUF:Q4_K_M`. Ollama runs it on the Mac; the iOS simulator is the native client. This is **not inference on the iPhone**. No other model or cloud AI fallback is configured.
 
@@ -9,10 +9,10 @@ This is a **standalone application repository**. It consumes .NET MAUI NuGet pac
 <p>
   <img src="media/screenshots/01-discover.png" alt="Native Bielik discovery screen" width="220" />
   <img src="media/screenshots/07-real-chat.png" alt="A real local Bielik response in the iOS app" width="220" />
-  <img src="media/screenshots/04-model.png" alt="Pinned Bielik model and local execution details" width="220" />
+  <img src="media/screenshots/12-official-model-credits.png" alt="Official SpeakLeash creator branding and local Bielik model details" width="220" />
 </p>
 
-[Real local-inference walkthrough](media/local-bielik-walkthrough.mp4) · [UI progress recording](media/progress/ui-progress.mp4) · [Screenshots](media/screenshots)
+[Real local-inference walkthrough](media/local-bielik-walkthrough.mp4) · [UI progress recording](media/progress/ui-progress.mp4) · [Official creator-branding update](media/progress/official-branding.mp4) · [Screenshots](media/screenshots)
 
 ## Requirements
 
@@ -190,3 +190,9 @@ Sources: [Bielik](https://bielik.ai/), [Bielik locally](https://bielik.ai/bielik
 ## License
 
 Application source and original artwork are MIT-licensed; see [LICENSE](LICENSE). The .NET template copyright notice is retained. The separately downloaded Bielik weights have their own Apache-2.0 license.
+
+The official SpeakLeash logo is bundled locally, unchanged, from the project's [MIT-licensed Bielik prompt book](https://github.com/speakleash/bielik-prompt-book/tree/b1eb2591c08f7ddf2d111c8325c4dc7cff11b173). It appears in the discovery and model credits. Its copyright, exact source, and MIT notice are preserved in [the packaged third-party notices](Bielik/Resources/Raw/third_party_notices.txt). No remote image requests are made by the app.
+
+The updated [discovery credits](media/screenshots/11-official-discover-credits.png), [model credits](media/screenshots/12-official-model-credits.png), and [11-second progress recording](media/progress/official-branding.mp4) show the actual iOS rendering. The [branding capture report](media/branding-report.json) checks both logos are fully within their native scroll viewports and have accessible creator attribution. This capture did not rerun inference; the earlier walkthrough and model results remain unchanged.
+
+The Bielik website's separate logo and mascot artwork are not bundled: their image-redistribution terms have not been confirmed. The model's Apache-2.0 license does not establish permission for those website graphics. Names and trademarks remain with their owners; this application is not endorsed by SpeakLeash.

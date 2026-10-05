@@ -1,0 +1,50 @@
+{
+  "recorded_at": "2026-10-05T18:31:16.549931+00:00",
+  "simulator": "D156BD2F-A6B1-47D9-9278-66E85A40D889",
+  "xctest_used": false,
+  "local_model_exercised": false,
+  "scope": "Native rendering of the unchanged official SpeakLeash creator logo; no inference claim.",
+  "asset_source_revision": "b1eb2591c08f7ddf2d111c8325c4dc7cff11b173",
+  "steps": [
+    {
+      "name": "discover_official_logo",
+      "status": "passed",
+      "window_bounds": {
+        "x": 102,
+        "y": 679.6666768391929,
+        "width": 198,
+        "height": 38
+      },
+      "scroll_viewport": {
+        "x": 0,
+        "y": 62,
+        "width": 402,
+        "height": 729
+      },
+      "screenshot": "screenshots/11-official-discover-credits.png"
+    },
+    {
+      "name": "model_official_logo",
+      "status": "passed",
+      "window_bounds": {
+        "x": 24,
+        "y": 360.66666666666674,
+        "width": 234,
+        "height": 45
+      },
+      "scroll_viewport": {
+        "x": 0,
+        "y": 62,
+        "width": 402,
+        "height": 729
+      },
+      "screenshot": "screenshots/12-official-model-credits.png"
+    },
+    {
+      "name": "original_home_navigation_preserved",
+      "status": "passed"
+    }
+  ],
+  "error": null,
+  "recording": "progress/official-branding.mp4"
+}

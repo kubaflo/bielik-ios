@@ -17,6 +17,7 @@
         <MauiIcon Include="Resources/AppIcon/appicon.svg" Color="#69243F" />
         <MauiSplashScreen Include="Resources/Splash/splash.svg" Color="#F7F4EF" BaseSize="128,128" />
         <MauiImage Include="Resources/Images/*.svg" />
+        <MauiAsset Include="Resources/Raw/**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
         <PackageReference Include="Microsoft.Maui.Controls" />
         <ProjectReference Include="../Bielik.Core/Bielik.Core.csproj" />
     </ItemGroup>
