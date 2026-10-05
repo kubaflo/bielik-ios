@@ -1,0 +1,262 @@
+{
+  "recorded_at": "2026-10-05T19:14:06.878549+00:00",
+  "simulator": "D156BD2F-A6B1-47D9-9278-66E85A40D889",
+  "device": {
+    "platform": "iOS",
+    "deviceType": "Virtual",
+    "idiom": "Phone",
+    "displayDensity": 3,
+    "windowCount": 1,
+    "windowWidth": 402,
+    "windowHeight": 874
+  },
+  "xctest_used": false,
+  "local_model_exercised": false,
+  "geometry": "Native windowBounds, including actual scroll offsets",
+  "steps": [
+    {
+      "name": "discover-official-logo",
+      "status": "passed",
+      "window_bounds": {
+        "x": 24,
+        "y": 76,
+        "width": 158,
+        "height": 35
+      },
+      "viewport_bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 402,
+        "height": 874
+      },
+      "accessible_description": "Logo Bielik AI z oficjalnej strony bielik.ai"
+    },
+    {
+      "name": "discover-official-illustration",
+      "status": "passed",
+      "window_bounds": {
+        "x": 110,
+        "y": 348,
+        "width": 182,
+        "height": 192
+      },
+      "viewport_bounds": {
+        "x": 0,
+        "y": 125,
+        "width": 402,
+        "height": 666
+      },
+      "accessible_description": "Oficjalna ilustracja orła Bielika z bielik.ai"
+    },
+    {
+      "name": "start-chat",
+      "status": "passed",
+      "window_bounds": {
+        "x": 24,
+        "y": 554,
+        "width": 354,
+        "height": 48
+      },
+      "viewport_bounds": {
+        "x": 0,
+        "y": 125,
+        "width": 402,
+        "height": 666
+      },
+      "accessible_description": ""
+    },
+    {
+      "name": "setup-local-server",
+      "status": "passed",
+      "window_bounds": {
+        "x": 24,
+        "y": 612,
+        "width": 354,
+        "height": 49
+      },
+      "viewport_bounds": {
+        "x": 0,
+        "y": 125,
+        "width": 402,
+        "height": 666
+      },
+      "accessible_description": ""
+    },
+    {
+      "name": "settings-official-logo",
+      "status": "passed",
+      "window_bounds": {
+        "x": 24,
+        "y": 80,
+        "width": 145,
+        "height": 32
+      },
+      "viewport_bounds": {
+        "x": 0,
+        "y": 62,
+        "width": 402,
+        "height": 729
+      },
+      "accessible_description": "Logo Bielik AI"
+    },
+    {
+      "name": "home_settings_navigation",
+      "status": "passed",
+      "screenshot": "11-settings-from-home.png"
+    },
+    {
+      "name": "official-creator-logo-discover",
+      "status": "passed",
+      "window_bounds": {
+        "x": 102,
+        "y": 675.3333333333334,
+        "width": 198,
+        "height": 38
+      },
+      "viewport_bounds": {
+        "x": 0,
+        "y": 125,
+        "width": 402,
+        "height": 666.0000000000001
+      },
+      "accessible_description": "Oficjalne logo SpeakLeash, twórców Bielika"
+    },
+    {
+      "name": "model-official-logo",
+      "status": "passed",
+      "window_bounds": {
+        "x": 24,
+        "y": 80,
+        "width": 145,
+        "height": 32
+      },
+      "viewport_bounds": {
+        "x": 0,
+        "y": 62,
+        "width": 402,
+        "height": 729
+      },
+      "accessible_description": "Logo Bielik AI"
+    },
+    {
+      "name": "model-official-network",
+      "status": "passed",
+      "window_bounds": {
+        "x": 245,
+        "y": 301.6666666666667,
+        "width": 110,
+        "height": 108
+      },
+      "viewport_bounds": {
+        "x": 0,
+        "y": 62,
+        "width": 402,
+        "height": 729
+      },
+      "accessible_description": "Oficjalna grafika sieci Bielika z bielik.ai"
+    },
+    {
+      "name": "official-creator-logo-model",
+      "status": "passed",
+      "window_bounds": {
+        "x": 24,
+        "y": 329.33333333333337,
+        "width": 234,
+        "height": 45
+      },
+      "viewport_bounds": {
+        "x": 0,
+        "y": 62,
+        "width": 402,
+        "height": 729
+      },
+      "accessible_description": "Oficjalne logo SpeakLeash, twórców Bielika"
+    },
+    {
+      "name": "chat-official-logo",
+      "status": "passed",
+      "window_bounds": {
+        "x": 24,
+        "y": 76,
+        "width": 113,
+        "height": 25
+      },
+      "viewport_bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 402,
+        "height": 874
+      },
+      "accessible_description": "Logo Bielik AI"
+    },
+    {
+      "name": "chat-official-illustration",
+      "status": "passed",
+      "window_bounds": {
+        "x": 151,
+        "y": 204.49999491373694,
+        "width": 100,
+        "height": 106
+      },
+      "viewport_bounds": {
+        "x": 24,
+        "y": 162.99999999999997,
+        "width": 354,
+        "height": 509.6666564941406
+      },
+      "accessible_description": "Ilustracja Bielika z oficjalnej strony"
+    },
+    {
+      "name": "chat-idea-learn",
+      "status": "passed",
+      "window_bounds": {
+        "x": 30,
+        "y": 427.49999491373694,
+        "width": 342,
+        "height": 48
+      },
+      "viewport_bounds": {
+        "x": 24,
+        "y": 162.99999999999997,
+        "width": 354,
+        "height": 509.6666564941406
+      },
+      "accessible_description": ""
+    },
+    {
+      "name": "chat-idea-write",
+      "status": "passed",
+      "window_bounds": {
+        "x": 30,
+        "y": 485.49999491373694,
+        "width": 342,
+        "height": 48
+      },
+      "viewport_bounds": {
+        "x": 24,
+        "y": 162.99999999999997,
+        "width": 354,
+        "height": 509.6666564941406
+      },
+      "accessible_description": ""
+    },
+    {
+      "name": "chat-idea-code",
+      "status": "passed",
+      "window_bounds": {
+        "x": 30,
+        "y": 543.4999949137369,
+        "width": 342,
+        "height": 48
+      },
+      "viewport_bounds": {
+        "x": 24,
+        "y": 162.99999999999997,
+        "width": 354,
+        "height": 509.6666564941406
+      },
+      "accessible_description": ""
+    }
+  ],
+  "error": null
+}

@@ -6,9 +6,9 @@
     Title="Bielik"
     FlyoutBehavior="Disabled"
     NavBarIsVisible="False"
-    Shell.TabBarBackgroundColor="{StaticResource Paper}"
-    Shell.TabBarForegroundColor="{StaticResource Wine}"
-    Shell.TabBarTitleColor="{StaticResource Wine}"
+    Shell.TabBarBackgroundColor="{StaticResource Card}"
+    Shell.TabBarForegroundColor="{StaticResource AccentInk}"
+    Shell.TabBarTitleColor="{StaticResource AccentInk}"
     Shell.TabBarUnselectedColor="{StaticResource Muted}">
     <TabBar>
         <ShellContent x:Name="DiscoverContent" Title="Odkrywaj" Route="discover" Icon="icon_home.png" />

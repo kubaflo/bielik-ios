@@ -27,6 +27,9 @@ public partial class DiscoverPage : ContentPage
     private async void OnStartChat(object? sender, EventArgs args) =>
         await Shell.Current.GoToAsync("//chat");
 
+    private async void OnSettingsClicked(object? sender, EventArgs args) =>
+        await Shell.Current.GoToAsync("//settings");
+
     private async void OnIdeaClicked(object? sender, EventArgs args)
     {
         if (sender is Button { BindingContext: PromptIdea idea })

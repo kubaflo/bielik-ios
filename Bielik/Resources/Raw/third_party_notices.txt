@@ -34,3 +34,40 @@ SOFTWARE.
 
 Names and trademarks remain with their owners. Including this creator credit
 does not imply that SpeakLeash endorses this unofficial application.
+
+
+Bielik website artwork
+======================
+
+Publisher: Fundacja SpeakLeash / Bielik AI
+Source website: https://bielik.ai/
+Retrieved: 2026-10-05
+Use in this application was explicitly authorized by the project owner in the
+development request. The images are not relicensed under this app's MIT license.
+Copyright and trademark rights remain with their respective owners. No general
+image-redistribution license or endorsement by SpeakLeash is claimed.
+
+The wordmark, eagle illustration, neural-network graphic, hero background and
+favicon are bundled from the website, without changes to their source pixels.
+MAUI generates platform-specific assets for the application icon and splash.
+Exact source URLs and SHA-256 hashes are in website_assets.json.
+
+
+Geologica and Source Sans Pro fonts
+==================================
+
+Geologica Regular and SemiBold:
+https://github.com/googlefonts/geologica/tree/685f38d7c9e86b0c8530204c97ddcaf6558dd17b
+Original files: fonts/ttf/Geologica-Regular.ttf,
+                fonts/ttf/Geologica-SemiBold.ttf
+License: SIL Open Font License 1.1
+Full copyright and license: licenses/geologica_ofl.txt
+
+Source Sans Pro Regular and Semibold:
+https://github.com/adobe-fonts/source-sans/tree/ce77773581f4d454f0fa985c073bb25c721bfcf5
+Original files: OTF/SourceSansPro-Regular.otf,
+                OTF/SourceSansPro-Semibold.otf
+License: SIL Open Font License 1.1
+Full copyright and license: licenses/source_sans_pro_ofl.txt
+
+These original font files are bundled unchanged and retain their own licenses.

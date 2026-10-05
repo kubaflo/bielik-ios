@@ -12,7 +12,15 @@ public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
-        var builder = MauiApp.CreateBuilder().UseMauiApp<App>();
+        var builder = MauiApp.CreateBuilder()
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("Geologica-Regular.ttf", "BielikDisplay");
+                fonts.AddFont("Geologica-SemiBold.ttf", "BielikHeading");
+                fonts.AddFont("SourceSansPro-Regular.otf", "BielikBody");
+                fonts.AddFont("SourceSansPro-Semibold.otf", "BielikBodySemibold");
+            });
         builder.Services.AddSingleton(_ => BielikClient.CreateLocalHttpClient());
         builder.Services.AddSingleton<BielikClient>();
         builder.Services.AddSingleton<IPreferences>(Preferences.Default);

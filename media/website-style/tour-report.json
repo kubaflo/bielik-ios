@@ -1,0 +1,116 @@
+{
+  "recorded_at": "2026-10-05T19:22:04.514377+00:00",
+  "simulator": "D156BD2F-A6B1-47D9-9278-66E85A40D889",
+  "app": {
+    "timestamp": "2026-10-05T19:21:52.3320370+00:00",
+    "agent": {
+      "name": "Microsoft.Maui.DevFlow.Agent",
+      "version": "0.1.0-preview.12.26421.1+78e85a5cb9c7a3efaaacf85d6176ce971f40b7d6",
+      "framework": ".NET MAUI",
+      "frameworkId": "maui",
+      "frameworkVersion": "11.0.0",
+      "uiFramework": "maui-controls",
+      "sessionId": "dwlsporkbielikbielikcsproj"
+    },
+    "device": {
+      "platform": "iOS",
+      "deviceType": "Virtual",
+      "idiom": "Phone",
+      "displayDensity": 3,
+      "windowCount": 1,
+      "windowWidth": 402,
+      "windowHeight": 874
+    },
+    "app": {
+      "name": "Bielik",
+      "packageId": "dev.bielik.companion",
+      "version": "1.0",
+      "build": "1",
+      "processId": 55108
+    },
+    "capabilities": {
+      "ui": true,
+      "layoutDiagnostics": false,
+      "screenshots": true,
+      "webview": false,
+      "network": true,
+      "logs": true,
+      "sensors": true,
+      "storage": true,
+      "profiler": false,
+      "jobs": true,
+      "theme": true,
+      "mutationLease": true
+    },
+    "running": true,
+    "route": "//discover",
+    "cdpReady": false,
+    "cdpWebViewCount": 0,
+    "profiler": {
+      "available": false,
+      "supportedInBuild": true,
+      "featureEnabled": false,
+      "platform": "iOS",
+      "managedMemorySupported": true,
+      "nativeMemorySupported": true,
+      "gcSupported": true,
+      "cpuPercentSupported": true,
+      "fpsSupported": true,
+      "frameTimingsEstimated": true,
+      "nativeFrameTimingsSupported": true,
+      "jankEventsSupported": true,
+      "uiThreadStallSupported": true,
+      "threadCountSupported": true
+    },
+    "profilerSession": null,
+    "extensions": {
+      "count": 0,
+      "hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    }
+  },
+  "xctest_used": false,
+  "local_model_exercised": false,
+  "steps": [
+    {
+      "name": "native_discover",
+      "status": "passed",
+      "screenshot": "01-discover.png"
+    },
+    {
+      "name": "inspiration_cards",
+      "status": "passed",
+      "screenshot": "02-inspiration.png"
+    },
+    {
+      "name": "native_navigation_and_presets",
+      "status": "passed",
+      "screenshot": "03-chat-empty.png"
+    },
+    {
+      "name": "pinned_model_screen",
+      "status": "passed",
+      "screenshot": "04-model.png"
+    },
+    {
+      "name": "local_inference_disclosure",
+      "status": "passed",
+      "screenshot": "05-model-details.png"
+    },
+    {
+      "name": "public_endpoint_rejected",
+      "status": "passed",
+      "error": "Tylko lokalnie: użyj localhost lub prywatnego adresu IP. Serwery internetowe są wyłączone."
+    },
+    {
+      "name": "local_settings",
+      "status": "passed",
+      "screenshot": "06-settings.png"
+    },
+    {
+      "name": "tour_only_no_inference_claimed",
+      "status": "passed"
+    }
+  ],
+  "error": null,
+  "recording": "ui-progress.mp4"
+}

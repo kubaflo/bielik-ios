@@ -53,7 +53,7 @@ public sealed class AppState : ObservableObject
     public bool CanConfigure => !_isChecking && !_isGenerating;
     public string StatusText => _isChecking ? "Sprawdzam połączenie" : _isReady ? "Lokalny Bielik gotowy" : "Połącz lokalnego Bielika";
     public string ShortStatus => _isChecking ? "SPRAWDZAM" : _isReady ? "LOKALNIE · GOTOWY" : "LOKALNIE · OFFLINE";
-    public Color StatusColor => Color.FromArgb(_isReady ? "#4B7155" : "#69243F");
+    public Color StatusColor => Color.FromArgb(_isReady ? "#4B7155" : "#AF402E");
     public string ConnectionError => _error;
     public bool HasConnectionError => _error.Length != 0;
     public Command ConnectCommand { get; }

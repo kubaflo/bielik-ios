@@ -2,16 +2,21 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <Color x:Key="Paper">#F7F4EF</Color>
-    <Color x:Key="Card">#FFFEFB</Color>
-    <Color x:Key="Wine">#69243F</Color>
-    <Color x:Key="WineDark">#43172C</Color>
-    <Color x:Key="Blush">#EEE3E6</Color>
-    <Color x:Key="Ink">#292526</Color>
-    <Color x:Key="Muted">#786F70</Color>
-    <Color x:Key="Line">#E5DED7</Color>
+    <Color x:Key="Paper">#FBF9F7</Color>
+    <Color x:Key="Card">#FFFFFF</Color>
+    <Color x:Key="Accent">#E76450</Color>
+    <Color x:Key="AccentInk">#AF402E</Color>
+    <Color x:Key="Navy">#091633</Color>
+    <Color x:Key="NavyLight">#EDF1F7</Color>
+    <Color x:Key="Blush">#FEF0ED</Color>
+    <Color x:Key="Ink">#3B4556</Color>
+    <Color x:Key="Muted">#667187</Color>
+    <Color x:Key="Line">#DCE2E9</Color>
     <Color x:Key="Sage">#4B7155</Color>
-    <Color x:Key="SageLight">#E8EEE5</Color>
-    <Color x:Key="Gold">#BA945D</Color>
+    <Color x:Key="SageLight">#EDF5F0</Color>
     <Color x:Key="Error">#8C3333</Color>
+    <x:String x:Key="BodyFont">BielikBody</x:String>
+    <x:String x:Key="BodySemiboldFont">BielikBodySemibold</x:String>
+    <x:String x:Key="DisplayFont">BielikDisplay</x:String>
+    <x:String x:Key="HeadingFont">BielikHeading</x:String>
 </ResourceDictionary>

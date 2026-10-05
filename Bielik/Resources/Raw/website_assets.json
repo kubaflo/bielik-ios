@@ -1,0 +1,66 @@
+{
+  "source": "https://bielik.ai/",
+  "retrieved_on": "2026-10-05",
+  "authorization": "The project owner explicitly authorized use of images from this website in the development request.",
+  "rights": "Original copyright and trademark rights remain with their owners. Website artwork is not relicensed under the application's MIT license.",
+  "changes": "Original source files are unchanged. MAUI generates platform-specific icon and splash rasters.",
+  "style_references": [
+    "https://bielik.ai/wp-content/uploads/elementor/css/post-8.css?ver=1786613762",
+    "https://bielik.ai/wp-content/uploads/elementor/css/post-40.css?ver=1786692844",
+    "https://bielik.ai/wp-content/uploads/elementor/css/post-104.css?ver=1786613764"
+  ],
+  "images": [
+    {
+      "file": "Resources/Images/official_bielik_logo.png",
+      "also_used_as": "Resources/Splash/bielik_splash.png",
+      "url": "https://bielik.ai/wp-content/uploads/2025/07/Bielik.ai_secondary_rabarbar-1.png",
+      "sha256": "9416398c21fbc7de5a828ae0d10c5c3a85d9235864662b2cd7d5ff6eec705fac"
+    },
+    {
+      "file": "Resources/Images/official_bielik_mascot.png",
+      "url": "https://bielik.ai/wp-content/uploads/2025/07/0989c910e72aae83f8a7575c6772c74a.png",
+      "sha256": "7834763397b48ccc7d06c0ed4419ed915e173b9253c380677f786544eff33427"
+    },
+    {
+      "file": "Resources/Images/official_bielik_network.png",
+      "url": "https://bielik.ai/wp-content/uploads/2025/07/3401b34d1cf558612700cf4edaec9718cdc9cd0a.png",
+      "sha256": "f2b2fb88faf9e3f67de28d6919fb58eb9d41961ddb2204d277d462349666f271"
+    },
+    {
+      "file": "Resources/Images/official_bielik_background.png",
+      "url": "https://bielik.ai/wp-content/uploads/2025/07/8ac20d1e59a0a3c3c5f658508de67331d5affd9a.png",
+      "sha256": "924a17ef0f9f5767259f5a652fc62c9f86d28469b9b459e8c4d1b4eb064579c0"
+    },
+    {
+      "file": "Resources/AppIcon/appicon.png",
+      "url": "https://bielik.ai/wp-content/uploads/2025/07/favicon.png",
+      "sha256": "eb7c9fc194705a4d5aed6a2575cd2060d0b3746b3556613346f30da7f4e5812b"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "Resources/Fonts/Geologica-Regular.ttf",
+      "source_revision": "685f38d7c9e86b0c8530204c97ddcaf6558dd17b",
+      "sha256": "6867b38d4b6f996af261172ce5d6e1eae2d0c895b7c67eb2ded67e6c12cffbb7",
+      "license": "SIL Open Font License 1.1"
+    },
+    {
+      "file": "Resources/Fonts/Geologica-SemiBold.ttf",
+      "source_revision": "685f38d7c9e86b0c8530204c97ddcaf6558dd17b",
+      "sha256": "b91a06c78559e76112c88a3131de912a253ea11d58e2120f55a61c479f604fe5",
+      "license": "SIL Open Font License 1.1"
+    },
+    {
+      "file": "Resources/Fonts/SourceSansPro-Regular.otf",
+      "source_revision": "ce77773581f4d454f0fa985c073bb25c721bfcf5",
+      "sha256": "774614c463f3c9bd6a3707e59eeb7c85c0753267ba2fd5105f8751c54b74b102",
+      "license": "SIL Open Font License 1.1"
+    },
+    {
+      "file": "Resources/Fonts/SourceSansPro-Semibold.otf",
+      "source_revision": "ce77773581f4d454f0fa985c073bb25c721bfcf5",
+      "sha256": "2b6b71c6ca0e98feb46d919a2a9b2db2baaf5a391f1087beff452bb25c0b882e",
+      "license": "SIL Open Font License 1.1"
+    }
+  ]
+}

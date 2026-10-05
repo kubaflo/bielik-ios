@@ -1,18 +1,29 @@
 # Bielik for iOS
 
-A native, Polish-language .NET 11 MAUI companion inspired by [bielik.ai](https://bielik.ai/). Four screens cover discovery, streamed chat, the selected model, and local connection settings. Original artwork is complemented by officially published SpeakLeash branding; this is an unofficial application, not a SpeakLeash product.
+A native, Polish-language, iOS-only .NET 11 MAUI companion styled after [bielik.ai](https://bielik.ai/): coral accents, slate/navy text, pale gradients, Geologica headings and Source Sans Pro body text. The actual website wordmark, eagle, neural-network illustration, background and favicon are bundled locally. Four native screens cover discovery, streamed chat, the selected model, and local connection settings. This is an unofficial application, not a SpeakLeash product.
 
 **Only local Bielik is used.** The pinned model is `hf.co/speakleash/Bielik-11B-v2.6-Instruct-GGUF:Q4_K_M`. Ollama runs it on the Mac; the iOS simulator is the native client. This is **not inference on the iPhone**. No other model or cloud AI fallback is configured.
 
 This is a **standalone application repository**. It consumes .NET MAUI NuGet packages and does not contain or build the MAUI framework source. Its SDK, workloads, packages, and build properties are pinned here. Run the following commands from this repository's root.
 
 <p>
-  <img src="media/screenshots/01-discover.png" alt="Native Bielik discovery screen" width="220" />
-  <img src="media/screenshots/07-real-chat.png" alt="A real local Bielik response in the iOS app" width="220" />
-  <img src="media/screenshots/12-official-model-credits.png" alt="Official SpeakLeash creator branding and local Bielik model details" width="220" />
+  <img src="media/website-style/screenshots/01-discover.png" alt="Bielik website-style native discovery screen with the real eagle artwork" width="190" />
+  <img src="media/website-style/screenshots/07-real-chat.png" alt="A freshly recorded local Bielik response in the redesigned native chat" width="190" />
+  <img src="media/website-style/screenshots/04-model.png" alt="Model details with the actual Bielik neural-network illustration" width="190" />
+  <img src="media/website-style/screenshots/06-settings.png" alt="Website-style local connection settings" width="190" />
 </p>
 
-[Real local-inference walkthrough](media/local-bielik-walkthrough.mp4) · [UI progress recording](media/progress/ui-progress.mp4) · [Official creator-branding update](media/progress/official-branding.mp4) · [Screenshots](media/screenshots)
+[Website-style local-inference walkthrough](media/website-style/local-bielik-walkthrough.mp4) · [Website-style UI tour](media/website-style/ui-progress.mp4) · [Current screenshots](media/website-style/screenshots)
+
+## Website identity, native interface
+
+The design follows the website's actual styles and assets rather than the earlier burgundy/serif interpretation. A white wordmark header leads into the official gradient and line-drawn eagle; coral primary buttons and outlined secondary actions carry through to the chat, model and settings pages. Navy chat bubbles, native controls and a pinned composer retain the app's original local-only behavior. The home screen's **Ustaw lokalny serwer** action opens connection settings.
+
+Colors and font families come from the site's published styles: coral `#E76450`, navy `#091633`, slate `#3B4556`, Geologica and Source Sans Pro. Small accent text uses a darker coral for readability. Website imagery, the app icon, splash and all four font faces are packaged with MAUI; there are no remote image requests or embedded website/WebView.
+
+The [asset manifest](Bielik/Resources/Raw/website_assets.json) records exact website image URLs, original SHA-256 hashes, pinned font revisions and the project's explicit authorization to use the website images. The [packaged notices](Bielik/Resources/Raw/third_party_notices.txt) retain source attribution and separate artwork/font rights.
+
+Historical [initial screenshots](media/screenshots), [original local-inference walkthrough](media/local-bielik-walkthrough.mp4), [initial progress recording](media/progress/ui-progress.mp4) and [first creator-branding update](media/progress/official-branding.mp4) remain unchanged as progress evidence, not previews of the current design.
 
 ## Requirements
 
@@ -22,7 +33,7 @@ This is a **standalone application repository**. It consumes .NET MAUI NuGet pac
 | Workload set | `11.0.100-preview.6.26364.2` |
 | MAUI Controls | `11.0.0-preview.6.26360.8` |
 | Xcode | 26.6 |
-| Simulator | iPhone 17 Pro, iOS 26.5 |
+| Simulators | iPhone 17 Pro and iPhone SE (3rd generation), iOS 26.5 |
 | Ollama | 0.32.14 |
 | DevFlow agent and project-local CLI | `0.1.0-preview.12.26421.1` |
 
@@ -120,7 +131,7 @@ The script records untouched responses, weight metadata, timings and generation 
 
 ### Actual Bielik results
 
-The [raw CPU evaluation](media/model-evaluation.json) and [native UI evidence](media/ui-report.json) were recorded on this Mac. The model digest is `7eb4bbe15c57c14e87ce5fa1132a01371ed1cc0b1626811c44667756e19359cc`.
+The [raw CPU evaluation](media/model-evaluation.json), [original native UI evidence](media/ui-report.json) and [fresh website-style native UI evidence](media/website-style/ui-report.json) were recorded on this Mac. The website-style run repeated actual streaming, memory, cancellation and error recovery using the same pinned model; it did not rerun the separate seven-probe model evaluation. The model digest is `7eb4bbe15c57c14e87ce5fa1132a01371ed1cc0b1626811c44667756e19359cc`.
 
 | Probe | Observed result |
 | --- | --- |
@@ -132,7 +143,7 @@ The [raw CPU evaluation](media/model-evaluation.json) and [native UI evidence](m
 | Generated C# | Correct implementation, but **failed the no-Markdown instruction** |
 | Compiled C# body | [7/7 checks passed](media/generated-code-checks.txt), including negative values, empty input, `long` overflow safety and null rejection; only enclosing fences were removed |
 
-Substantive direct CPU responses ran at approximately **19-25 tokens/second**; the final recorded native explanation measured **21.1 tokens/second**. Tiny replies have noisier rates. The model-probe command intentionally exits **1** for the observed strict-JSON failure; that is a model-quality finding, not a failing application test. Do not treat instruction-only output as guaranteed machine-readable JSON or executable source. The model's claims about faster execution, improved privacy or reduced energy use are not guarantees; they depend on the deployment.
+Substantive direct CPU responses ran at approximately **19-25 tokens/second**. The original native explanation measured **21.1 tokens/second**; the refreshed website-style recording measured **19.3 tokens/second**. Tiny replies have noisier rates. The model-probe command intentionally exits **1** for the observed strict-JSON failure; that is a model-quality finding, not a failing application test. Do not treat instruction-only output as guaranteed machine-readable JSON or executable source. The model's claims about faster execution, improved privacy or reduced energy use are not guarantees; they depend on the deployment.
 
 With the Debug app installed and the local model ready:
 
@@ -142,7 +153,9 @@ python3 scripts/capture-ios.py \
   --output /tmp/bielik-capture
 ```
 
-The capture script resets this app's conversation and endpoint. All **15 native checks passed**, including navigation, presets, public-endpoint rejection, a real streamed response, native clipboard copying, preserving conversation when rechecking an unchanged endpoint, conversation recall, generation cancellation, and recovery from an unavailable-server error without fallback. It captures screenshots, a simulator-only H.264 movie, and a JSON report. It uses a **non-forced, exclusive DevFlow lease** and releases it afterward. It never uses XCTest, desktop input, or another app's window.
+The capture script resets this app's conversation and endpoint. All **15 native checks passed again with the website-style design**, including navigation, presets, public-endpoint rejection, a real streamed response, native clipboard copying, preserving conversation when rechecking an unchanged endpoint, conversation recall, generation cancellation, and recovery from an unavailable-server error without fallback. It captures screenshots, a simulator-only H.264 movie, and a JSON report. It uses a **non-forced, exclusive DevFlow lease** and releases it afterward. It never uses XCTest, desktop input, or another app's window.
+
+The separate [branding report](media/website-style/branding-report.json) checks official artwork placement, accessible image descriptions, 44-point minimum touch targets and home-to-settings navigation using native `windowBounds`, not unscrolled layout coordinates. The [compact-phone report](media/website-style/compact-report.json) and [compact screenshots](media/website-style/compact-screenshots) verify the 375 × 667-point iPhone SE layout, reachable scrollable controls and pinned composer. The compact chat screenshot is intentionally scrolled to show all presets. These additional layout captures make no inference claim.
 
 Add `--tour-only` for a UI progress recording before weights are installed; that mode explicitly makes no inference claim. Use a dedicated simulator for either mode.
 
@@ -151,12 +164,12 @@ Compress a capture without changing its content:
 ```bash
 ffmpeg -i /tmp/bielik-capture/local-bielik-walkthrough.mp4 \
   -vf 'scale=720:-2,fps=24' -c:v libx264 -crf 23 \
-  -movflags +faststart -an media/local-bielik-walkthrough.mp4
+  -movflags +faststart -an /tmp/bielik-capture/local-bielik-walkthrough-small.mp4
 ffprobe -v error -show_entries format=duration,size \
-  media/local-bielik-walkthrough.mp4
+  /tmp/bielik-capture/local-bielik-walkthrough-small.mp4
 ```
 
-The [UI progress movie](media/progress/ui-progress.mp4) documents the native app before inference was available. It is an actual simulator recording, not a mockup.
+The original [UI progress movie](media/progress/ui-progress.mp4) documents the native app before inference was available. The [current UI tour](media/website-style/ui-progress.mp4) shows the website-style interface separately from the [fresh actual-inference walkthrough](media/website-style/local-bielik-walkthrough.mp4). These are simulator recordings, not mockups.
 
 ## Release and physical iPhones
 
@@ -193,6 +206,6 @@ Application source and original artwork are MIT-licensed; see [LICENSE](LICENSE)
 
 The official SpeakLeash logo is bundled locally, unchanged, from the project's [MIT-licensed Bielik prompt book](https://github.com/speakleash/bielik-prompt-book/tree/b1eb2591c08f7ddf2d111c8325c4dc7cff11b173). It appears in the discovery and model credits. Its copyright, exact source, and MIT notice are preserved in [the packaged third-party notices](Bielik/Resources/Raw/third_party_notices.txt). No remote image requests are made by the app.
 
-The updated [discovery credits](media/screenshots/11-official-discover-credits.png), [model credits](media/screenshots/12-official-model-credits.png), and [11-second progress recording](media/progress/official-branding.mp4) show the actual iOS rendering. The [branding capture report](media/branding-report.json) checks both logos are fully within their native scroll viewports and have accessible creator attribution. This capture did not rerun inference; the earlier walkthrough and model results remain unchanged.
+The Bielik website wordmark, eagle, neural-network illustration, gradient background and favicon are now bundled under the project owner's explicit authorization to use images from bielik.ai. Their original copyright and trademark rights remain with their owners; they are **not relicensed under the application's MIT license**. The model's Apache-2.0 license does not establish artwork rights. Exact sources and unchanged source-file hashes are in the [asset manifest](Bielik/Resources/Raw/website_assets.json).
 
-The Bielik website's separate logo and mascot artwork are not bundled: their image-redistribution terms have not been confirmed. The model's Apache-2.0 license does not establish permission for those website graphics. Names and trademarks remain with their owners; this application is not endorsed by SpeakLeash.
+Geologica Regular/SemiBold and Source Sans Pro Regular/Semibold are bundled unchanged under SIL Open Font License 1.1. Full notices are packaged in [the Geologica license](Bielik/Resources/Raw/licenses/geologica_ofl.txt) and [the Source Sans Pro license](Bielik/Resources/Raw/licenses/source_sans_pro_ofl.txt). Names and trademarks remain with their owners; this application is not endorsed by SpeakLeash.
