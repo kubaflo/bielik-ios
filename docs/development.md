@@ -135,6 +135,16 @@ Simulator ad-hoc signing is intentional. Disabling signing can cause iOS to kill
 
 The default Debug endpoint is `http://127.0.0.1:11434`, which reaches this Mac from its iOS simulator. Open **Ustawienia** and check the connection, then use **Rozmowa**. Inspiration cards populate the composer without automatically sending a prompt.
 
+For a separate recording simulator while another preview already uses DevFlow port 9235, choose a free automation port at launch:
+
+```bash
+SIMCTL_CHILD_BIELIK_DEVFLOW_PORT=9237 \
+  xcrun simctl launch --terminate-running-process \
+  "$BIELIK_SIMULATOR" dev.bielik.companion
+```
+
+This Debug-only override leaves the normal port at 9235. Values outside `1-65535` or non-integer values fail startup explicitly; Release still has no automation agent. Use the chosen port with the capture script's `--agent-port` option, and do not target a simulator someone is using.
+
 If NuGet is unreachable but the exact dependencies are already cached, append `--source "$HOME/.nuget/packages"` to `dotnet restore`. This workaround was used on the development machine; it is not a replacement for fetching dependencies on a clean machine.
 
 Restore the complete multi-target project without a global `TargetFramework`/`TargetFrameworks` override. Such an override also retargets the generic `Bielik.Core` project during restore. Select the desired framework and runtime in the subsequent **`--no-restore` build**, as shown here.
@@ -255,7 +265,9 @@ ffprobe -v error -show_entries format=duration,size \
   /tmp/bielik-capture/local-bielik-walkthrough-small.mp4
 ```
 
-The original [UI progress movie](../media/progress/ui-progress.mp4) documents the native app before inference was available. Current [Android](../media/android-meai/android/ui-progress.mp4) and [iOS](../media/android-meai/ios/ui-progress.mp4) tours show the website-style interface separately from the actual-inference walkthroughs. The Android walkthrough is 52.2 seconds; the iOS walkthrough is 31.9 seconds. All four current movies are H.264 at 720 pixels wide and have been fully decoded after compression. They are actual virtual-device recordings, not mockups.
+The original [UI progress movie](../media/progress/ui-progress.mp4) documents the native app before inference was available. The [Android](../media/android-meai/android/ui-progress.mp4) and [iOS](../media/android-meai/ios/ui-progress.mp4) verification tours show the website-style interface separately from the actual-inference walkthroughs. The Android walkthrough is 52.2 seconds; the iOS walkthrough is 31.9 seconds. Those four verification movies are H.264 at 720 pixels wide and have been fully decoded after compression. They are actual virtual-device recordings, not mockups.
+
+The newer product demos for [iOS](../media/demos/ios-demo.mp4) and [Android](../media/demos/android-demo.mp4) cover discovery, ideas, model details, connection settings, a real Polish reply and copying it. Both are portrait H.264 videos at **1080 x 1920, 24 fps**, with branded title/closing cards and chapter captions. Native footage stays at its original speed; replies are neither mocked nor replayed. Inference is on the Mac CPU, not the phone. The [iOS capture report](../media/demos/ios-demo.json) and [Android capture report](../media/demos/android-demo.json) preserve prompts, untouched responses, timing, recording hashes and native clipboard verification. Dedicated recording devices kept manual-testing sessions untouched; no XCTest or desktop input was used.
 
 ## Release and physical phones
 

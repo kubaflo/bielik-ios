@@ -5,6 +5,7 @@ using Bielik.Views;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.AI;
 #if DEBUG
+using System.Globalization;
 using Microsoft.Maui.DevFlow.Agent;
 #endif
 
@@ -40,7 +41,15 @@ public static class MauiProgram
         builder.Services.AddSingleton<Func<AppShell>>(services => () => services.GetRequiredService<AppShell>());
 #if DEBUG
         builder.Logging.AddDebug();
-        builder.AddMauiDevFlowAgent(options => options.Port = 9235);
+        var agentPort = 9235;
+        var configuredPort = Environment.GetEnvironmentVariable("BIELIK_DEVFLOW_PORT");
+        if (configuredPort is not null &&
+            (!int.TryParse(configuredPort, NumberStyles.None, CultureInfo.InvariantCulture, out agentPort) ||
+             agentPort is < 1 or > 65535))
+        {
+            throw new InvalidOperationException("BIELIK_DEVFLOW_PORT must be an integer between 1 and 65535.");
+        }
+        builder.AddMauiDevFlowAgent(options => options.Port = agentPort);
 #endif
         return builder.Build();
     }

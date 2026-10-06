@@ -13,12 +13,12 @@
 <p align="center">
   <a href="#get-started">Get started</a> &middot;
   <a href="docs/development.md">Developer guide</a> &middot;
-  <a href="media/android-meai">All screenshots &amp; videos</a>
+  <a href="media">All screenshots &amp; videos</a>
 </p>
 
 ## See it in action
 
-Real screenshots and recordings from the iOS simulator and Android emulator.
+Real native screenshots. The demos tour the app and stream an actual local Bielik reply.
 
 <table>
   <tr>
@@ -37,11 +37,11 @@ Real screenshots and recordings from the iOS simulator and Android emulator.
   </tr>
   <tr>
     <td align="center">
-      <a href="media/android-meai/ios/local-bielik-walkthrough.mp4">Watch the chat demo</a> &middot;
+      <a href="media/demos/ios-demo.mp4">Watch the demo</a> &middot;
       <a href="media/android-meai/ios/ui-progress.mp4">UI tour</a>
     </td>
     <td align="center">
-      <a href="media/android-meai/android/local-bielik-walkthrough.mp4">Watch the chat demo</a> &middot;
+      <a href="media/demos/android-demo.mp4">Watch the demo</a> &middot;
       <a href="media/android-meai/android/ui-progress.mp4">UI tour</a>
     </td>
   </tr>
