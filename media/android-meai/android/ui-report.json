@@ -1,0 +1,162 @@
+{
+  "recorded_at": "2026-10-05T23:52:30.627769+00:00",
+  "simulator": "emulator-5580",
+  "platform": "android",
+  "app": {
+    "timestamp": "2026-10-05T23:51:47.7163843+00:00",
+    "agent": {
+      "name": "Microsoft.Maui.DevFlow.Agent",
+      "version": "0.1.0-preview.12.26421.1+78e85a5cb9c7a3efaaacf85d6176ce971f40b7d6",
+      "framework": ".NET MAUI",
+      "frameworkId": "maui",
+      "frameworkVersion": "11.0.0",
+      "uiFramework": "maui-controls",
+      "sessionId": "dwlsporkbielikbielikcsproj"
+    },
+    "device": {
+      "platform": "Android",
+      "deviceType": "Virtual",
+      "idiom": "Phone",
+      "displayDensity": 2.625,
+      "windowCount": 1,
+      "windowWidth": 411.42857142857144,
+      "windowHeight": 923.4285714285714
+    },
+    "app": {
+      "name": "Bielik",
+      "packageId": "dev.bielik.companion",
+      "version": "1.0",
+      "build": "1",
+      "processId": 14231
+    },
+    "capabilities": {
+      "ui": true,
+      "layoutDiagnostics": false,
+      "screenshots": true,
+      "webview": false,
+      "network": true,
+      "logs": true,
+      "sensors": true,
+      "storage": true,
+      "profiler": false,
+      "jobs": true,
+      "theme": true,
+      "mutationLease": true
+    },
+    "running": true,
+    "route": "//chat",
+    "cdpReady": false,
+    "cdpWebViewCount": 0,
+    "profiler": {
+      "available": false,
+      "supportedInBuild": true,
+      "featureEnabled": false,
+      "platform": "Android",
+      "managedMemorySupported": true,
+      "nativeMemorySupported": true,
+      "gcSupported": true,
+      "cpuPercentSupported": true,
+      "fpsSupported": true,
+      "frameTimingsEstimated": false,
+      "nativeFrameTimingsSupported": true,
+      "jankEventsSupported": true,
+      "uiThreadStallSupported": true,
+      "threadCountSupported": true
+    },
+    "profilerSession": null,
+    "extensions": {
+      "count": 0,
+      "hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    }
+  },
+  "xctest_used": false,
+  "local_model_exercised": true,
+  "steps": [
+    {
+      "name": "native_discover",
+      "status": "passed",
+      "screenshot": "screenshots/01-discover.png"
+    },
+    {
+      "name": "inspiration_cards",
+      "status": "passed",
+      "screenshot": "screenshots/02-inspiration.png"
+    },
+    {
+      "name": "native_navigation_and_presets",
+      "status": "passed",
+      "screenshot": "screenshots/03-chat-empty.png"
+    },
+    {
+      "name": "pinned_model_screen",
+      "status": "passed",
+      "screenshot": "screenshots/04-model.png"
+    },
+    {
+      "name": "local_inference_disclosure",
+      "status": "passed",
+      "screenshot": "screenshots/05-model-details.png"
+    },
+    {
+      "name": "meai_and_essentials_policy",
+      "status": "passed",
+      "provider": "IChatClient · lokalny Bielik · strumieniowanie i anulowanie na iOS oraz Androidzie.",
+      "essentials": "Microsoft.Maui.Essentials.AI nie ma jeszcze natywnego dostawcy dla Androida. IChatClient obsługuje tutaj wyłącznie lokalnego Bielika na Twoim Macu.",
+      "screenshot": "screenshots/05-ai-integration.png"
+    },
+    {
+      "name": "public_endpoint_rejected",
+      "status": "passed",
+      "error": "Tylko lokalnie: użyj localhost lub prywatnego adresu IP. Serwery internetowe są wyłączone."
+    },
+    {
+      "name": "local_settings",
+      "status": "passed",
+      "screenshot": "screenshots/06-settings.png"
+    },
+    {
+      "name": "actual_model_ready",
+      "status": "passed",
+      "digest": "Identyfikator wag: 7eb4bbe15c57"
+    },
+    {
+      "name": "real_polish_streamed_reply",
+      "status": "passed",
+      "reply": "Lokalna sztuczna inteligencja (Local AI) to podejście, w którym algorytmy uczenia maszynowego są wdrażane i wykonywane na urządzeniach lokalnych (np. smartfonach, komputerach), a nie w chmurze. Pozwala to na przetwarzanie danych bezpośrednio na miejscu, co zwiększa prywatność, zmniejsza opóźnienia i ogranicza potrzebę transmisji danych.",
+      "metrics": "BIELIK · 20,4 TOK/S",
+      "screenshot": "screenshots/07-real-chat.png"
+    },
+    {
+      "name": "native_clipboard",
+      "status": "passed"
+    },
+    {
+      "name": "same_endpoint_check_keeps_conversation",
+      "status": "passed"
+    },
+    {
+      "name": "actual_conversation_memory",
+      "status": "passed",
+      "reply": "bursztyn",
+      "screenshot": "screenshots/08-memory.png"
+    },
+    {
+      "name": "real_generation_cancellation",
+      "status": "passed",
+      "screenshot": "screenshots/09-cancellation.png"
+    },
+    {
+      "name": "offline_error_without_fallback",
+      "status": "passed",
+      "error": "Nie można połączyć się z lokalnym serwerem. Uruchom Ollama na Macu i sprawdź adres."
+    },
+    {
+      "name": "restored_local_chat",
+      "status": "passed",
+      "reply": "Korzystanie z Bielika lokalnie przyspiesza odpowiedzi i zmniejsza opóźnienia, zapewniając bardziej płynną interakcję. Ponadto, lokalne użycie może być bardziej efektywne energetycznie i przyjazne dla środowiska.",
+      "screenshot": "screenshots/10-final-chat.png"
+    }
+  ],
+  "error": null,
+  "recording": "local-bielik-walkthrough.mp4"
+}

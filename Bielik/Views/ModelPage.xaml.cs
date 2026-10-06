@@ -17,12 +17,12 @@ public partial class ModelPage : ContentPage
         {
             if (!await Browser.Default.OpenAsync(ModelInfo.ModelCard, BrowserLaunchMode.SystemPreferred))
             {
-                await DisplayAlertAsync("Nie można otworzyć strony", "Spróbuj otworzyć kartę modelu w Safari.", "OK");
+                await DisplayAlertAsync("Nie można otworzyć strony", "Adres karty modelu znajduje się w dokumentacji aplikacji.", "OK");
             }
         }
         catch (FeatureNotSupportedException)
         {
-            await DisplayAlertAsync("Safari jest niedostępne", "Adres karty modelu znajduje się w dokumentacji aplikacji.", "OK");
+            await DisplayAlertAsync("Przeglądarka jest niedostępna", "Adres karty modelu znajduje się w dokumentacji aplikacji.", "OK");
         }
     }
 }

@@ -1,19 +1,28 @@
-# Bielik for iOS
+# Bielik for iOS and Android
 
-A native, Polish-language, iOS-only .NET 11 MAUI companion styled after [bielik.ai](https://bielik.ai/): coral accents, slate/navy text, pale gradients, Geologica headings and Source Sans Pro body text. The actual website wordmark, eagle, neural-network illustration, background and favicon are bundled locally. Four native screens cover discovery, streamed chat, the selected model, and local connection settings. This is an unofficial application, not a SpeakLeash product.
+A native, Polish-language, **iOS and Android .NET 11 MAUI** companion styled after [bielik.ai](https://bielik.ai/): coral accents, slate/navy text, pale gradients, Geologica headings and Source Sans Pro body text. The actual website wordmark, eagle, neural-network illustration, background and favicon are bundled locally. Four native screens cover discovery, streamed chat, the selected model, and local connection settings. This is an unofficial application, not a SpeakLeash product. The repository retains its original `bielik-ios` name.
 
-**Only local Bielik is used.** The pinned model is `hf.co/speakleash/Bielik-11B-v2.6-Instruct-GGUF:Q4_K_M`. Ollama runs it on the Mac; the iOS simulator is the native client. This is **not inference on the iPhone**. No other model or cloud AI fallback is configured.
+**Only local Bielik is used.** The pinned model is `hf.co/speakleash/Bielik-11B-v2.6-Instruct-GGUF:Q4_K_M`. Ollama runs it on the Mac; the iOS simulator and Android emulator are native clients. This is **not inference on either phone**. Both platforms use MEAI's `IChatClient`; no other model or cloud AI fallback is configured.
 
 This is a **standalone application repository**. It consumes .NET MAUI NuGet packages and does not contain or build the MAUI framework source. Its SDK, workloads, packages, and build properties are pinned here. Run the following commands from this repository's root.
 
 <p>
-  <img src="media/website-style/screenshots/01-discover.png" alt="Bielik website-style native discovery screen with the real eagle artwork" width="190" />
-  <img src="media/website-style/screenshots/07-real-chat.png" alt="A freshly recorded local Bielik response in the redesigned native chat" width="190" />
-  <img src="media/website-style/screenshots/04-model.png" alt="Model details with the actual Bielik neural-network illustration" width="190" />
-  <img src="media/website-style/screenshots/06-settings.png" alt="Website-style local connection settings" width="190" />
+  <img src="media/android-meai/ios/screenshots/01-discover.png" alt="Bielik website-style native iOS discovery screen with the real eagle artwork" width="190" />
+  <img src="media/android-meai/ios/screenshots/07-real-chat.png" alt="An actual local Bielik response streamed through MEAI on iOS" width="190" />
+  <img src="media/android-meai/ios/screenshots/04-model.png" alt="iOS model details with the actual Bielik neural-network illustration" width="190" />
+  <img src="media/android-meai/ios/screenshots/06-settings.png" alt="Website-style iOS local connection settings" width="190" />
 </p>
 
-[Website-style local-inference walkthrough](media/website-style/local-bielik-walkthrough.mp4) · [Website-style UI tour](media/website-style/ui-progress.mp4) · [Current screenshots](media/website-style/screenshots)
+[iOS local-inference walkthrough](media/android-meai/ios/local-bielik-walkthrough.mp4) · [iOS UI tour](media/android-meai/ios/ui-progress.mp4) · [Current iOS screenshots](media/android-meai/ios/screenshots)
+
+<p>
+  <img src="media/android-meai/android/screenshots/01-discover.png" alt="Native Android Bielik discovery screen with official website artwork" width="190" />
+  <img src="media/android-meai/android/screenshots/07-real-chat.png" alt="Actual local Bielik response streamed through MEAI on Android" width="190" />
+  <img src="media/android-meai/android/screenshots/05-ai-integration.png" alt="Android MEAI integration and explicit Essentials AI platform limitation" width="190" />
+  <img src="media/android-meai/android/screenshots/06-settings.png" alt="Android local server settings using the emulator gateway" width="190" />
+</p>
+
+[Android actual-inference movie](media/android-meai/android/local-bielik-walkthrough.mp4) · [Android progress tour](media/android-meai/android/ui-progress.mp4) · [Android report](media/android-meai/android/ui-report.json) · [Refreshed iOS MEAI evidence](media/android-meai/ios)
 
 ## Website identity, native interface
 
@@ -21,9 +30,11 @@ The design follows the website's actual styles and assets rather than the earlie
 
 Colors and font families come from the site's published styles: coral `#E76450`, navy `#091633`, slate `#3B4556`, Geologica and Source Sans Pro. Small accent text uses a darker coral for readability. Website imagery, the app icon, splash and all four font faces are packaged with MAUI; there are no remote image requests or embedded website/WebView.
 
+The original website background remains unchanged. A tiny, locally generated transparent-white PNG reproduces the hero overlay's alpha fade from `209/255` to `128/255` on both platforms. This avoids the Android preview's opaque rendering of alpha gradient brushes without modifying or duplicating the official artwork.
+
 The [asset manifest](Bielik/Resources/Raw/website_assets.json) records exact website image URLs, original SHA-256 hashes, pinned font revisions and the project's explicit authorization to use the website images. The [packaged notices](Bielik/Resources/Raw/third_party_notices.txt) retain source attribution and separate artwork/font rights.
 
-Historical [initial screenshots](media/screenshots), [original local-inference walkthrough](media/local-bielik-walkthrough.mp4), [initial progress recording](media/progress/ui-progress.mp4) and [first creator-branding update](media/progress/official-branding.mp4) remain unchanged as progress evidence, not previews of the current design.
+Historical [initial screenshots](media/screenshots), [original local-inference walkthrough](media/local-bielik-walkthrough.mp4), [initial progress recording](media/progress/ui-progress.mp4), [first creator-branding update](media/progress/official-branding.mp4) and [earlier website-style evidence](media/website-style) remain unchanged as progress evidence, not previews of the current implementation.
 
 ## Requirements
 
@@ -32,12 +43,17 @@ Historical [initial screenshots](media/screenshots), [original local-inference w
 | .NET SDK | `11.0.100-preview.6.26359.118` |
 | Workload set | `11.0.100-preview.6.26364.2` |
 | MAUI Controls | `11.0.0-preview.6.26360.8` |
+| Essentials AI | `11.0.0-preview.6.26360.8` |
+| MEAI abstractions | `10.3.0` |
 | Xcode | 26.6 |
 | Simulators | iPhone 17 Pro and iPhone SE (3rd generation), iOS 26.5 |
+| Android SDK / verified emulator | API 37 / Pixel 9, API 35, ARM64 |
+| Android emulator | `36.6.11.0` |
+| Java used | JDK 21.0.8 |
 | Ollama | 0.32.14 |
 | DevFlow agent and project-local CLI | `0.1.0-preview.12.26421.1` |
 
-Install the SDK specified in [`global.json`](global.json), Xcode and its iOS simulator runtime. The SDK and MAUI APIs are previews. Ollama needs enough memory for an 11B model; the selected quantization downloads approximately 6.7 GB of weights. Python 3 is needed for the verification scripts, and FFmpeg is needed only for media compression.
+Install the SDK specified in [`global.json`](global.json), Xcode and its iOS simulator runtime, and the Android SDK with an ARM64 emulator image. Android requires API 24 or newer; iOS requires 17 or newer. The SDK and MAUI APIs are previews. Ollama needs enough memory for an 11B model; the selected quantization downloads approximately 6.7 GB of weights. Python 3 is needed for the verification scripts, and FFmpeg is needed only for media compression.
 
 ```bash
 git clone https://github.com/kubaflo/bielik-ios.git
@@ -51,6 +67,26 @@ brew install ollama ffmpeg
 ```
 
 The local tool manifest deliberately pins the CLI to the agent version. An older global `maui` CLI can inspect the app but cannot honor the newer agent's mutation-lease protocol; use `dotnet maui` here.
+
+[`NuGet.config`](NuGet.config) uses Microsoft's single public `dotnet-public` feed for the pinned preview packages, avoiding dependence on machine-specific feeds or multiple-source central-package-management warnings.
+
+## MEAI and MAUI Essentials AI
+
+[`BielikChatClient`](Bielik.Core/BielikChatClient.cs) implements `Microsoft.Extensions.AI.IChatClient` over the existing validated Ollama transport. The shared chat view model actually consumes this interface on both platforms. Streaming produces standard `ChatResponseUpdate` objects, completion reasons and `UsageContent`; non-streaming calls aggregate a `ChatResponse`. Native UI metrics remain available as `bielik.generation_metrics`.
+
+The adapter resolves the saved private endpoint for each request and preserves the exact model, CPU inference, bounded whole-turn context, cancellation and explicit errors. It rejects alternate models, images, tool calls, system overrides and unsupported options before sending them. Only successfully completed exchanges enter conversation memory.
+
+**`Microsoft.Maui.Essentials.AI` does not provide Android native inference yet.** Following [Microsoft's AI documentation](https://learn.microsoft.com/dotnet/maui/ai/?view=net-maui-10.0), the app includes the matching Essentials AI package and exposes its actual platform/provider policy on the Model screen:
+
+| Capability | iOS | Android |
+| --- | --- | --- |
+| Pinned Bielik through MEAI | Local Mac inference, iOS 17+ client | Local Mac inference, Android API 24+ client |
+| `AppleIntelligenceChatClient` | Apple Intelligence API, iOS 26+, **not selected** | No implementation |
+| `NLEmbeddingGenerator` | Apple NaturalLanguage embeddings, iOS 13+, **not registered** | No implementation |
+
+On iOS 26+, the diagnostics instantiate `AppleIntelligenceChatClient` only to read its MEAI provider/model metadata. They never send it a prompt or claim its model is ready. Actual Apple inference additionally requires eligible hardware, enabled Apple Intelligence and downloaded weights; a simulator/OS check alone is insufficient. On older iOS and on Android, the screen explicitly describes the limitation.
+
+Apple's system model and `NLEmbeddingGenerator`'s embedding model are not Bielik, so neither replaces the pinned weights. There is no unsupported Android on-device AI claim, hidden Apple/Gemini switch, embedding feature or cloud fallback. Experimental diagnostics are suppressed only where the specific API is used; other warnings remain errors.
 
 ## Run the exact local model
 
@@ -75,7 +111,7 @@ If the model download repeatedly fails with HTTP/2 stream cancellations, restart
 
 **Runtime choice:** this app explicitly requests CPU inference (`num_gpu=0`). On this M4 Max with Ollama 0.32.14, a clean Metal runner repeatedly produced control characters and an incomplete response, while the same weights and prompt completed correctly on CPU. The [untouched comparison](media/runtime-comparison.json) preserves both outcomes. This is an observed runtime-specific limitation, not a claim that Bielik generally cannot use GPUs. No model substitution is involved.
 
-## Build and install on the simulator
+## Build and install on iOS
 
 List available devices and choose a dedicated simulator:
 
@@ -89,8 +125,7 @@ xcrun simctl bootstatus "$BIELIK_SIMULATOR" -b
 Skip `boot` if that simulator is already booted. None of these commands opens or takes control of the desktop Simulator window.
 
 ```bash
-dotnet restore Bielik/Bielik.csproj \
-  --runtime iossimulator-arm64 -p:Configuration=Debug
+dotnet restore Bielik/Bielik.csproj -p:Configuration=Debug
 
 dotnet build Bielik/Bielik.csproj \
   --no-restore --framework net11.0-ios --configuration Debug \
@@ -109,6 +144,49 @@ The default Debug endpoint is `http://127.0.0.1:11434`, which reaches this Mac f
 
 If NuGet is unreachable but the exact dependencies are already cached, append `--source "$HOME/.nuget/packages"` to `dotnet restore`. This workaround was used on the development machine; it is not a replacement for fetching dependencies on a clean machine.
 
+Restore the complete multi-target project without a global `TargetFramework`/`TargetFrameworks` override. Such an override also retargets the generic `Bielik.Core` project during restore. Select the desired framework and runtime in the subsequent **`--no-restore` build**, as shown here.
+
+## Build and install on Android
+
+Create a dedicated AVD from an installed ARM64 system image, or select one you already use for this app:
+
+```bash
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+avdmanager create avd --name Bielik_Pixel_9_API_35 \
+  --package 'system-images;android-35;google_apis_playstore;arm64-v8a' \
+  --device pixel_9
+
+# Keep this running in its own terminal. No desktop emulator window is opened.
+emulator -avd Bielik_Pixel_9_API_35 -no-window -no-audio \
+  -no-boot-anim -no-snapshot -gpu swiftshader -port 5580
+```
+
+Do not overwrite an existing AVD or reuse occupied emulator ports. The recorded run used a new isolated Pixel 9 image at 1080 x 2424, not the user's existing emulator.
+
+```bash
+export BIELIK_ANDROID=emulator-5580
+adb -s "$BIELIK_ANDROID" wait-for-device
+adb -s "$BIELIK_ANDROID" shell getprop sys.boot_completed # wait until this is 1
+
+dotnet restore Bielik/Bielik.csproj -p:Configuration=Debug
+dotnet build Bielik/Bielik.csproj --no-restore \
+  --framework net11.0-android --configuration Debug \
+  -p:RuntimeIdentifier=android-arm64
+
+adb -s "$BIELIK_ANDROID" install --no-incremental -r \
+  Bielik/bin/Debug/net11.0-android/android-arm64/dev.bielik.companion-Signed.apk
+activity=$(adb -s "$BIELIK_ANDROID" shell cmd package resolve-activity \
+  --brief dev.bielik.companion | tr -d '\r' | tail -1)
+adb -s "$BIELIK_ANDROID" shell am start -W -n "$activity"
+adb -s "$BIELIK_ANDROID" forward --no-rebind tcp:9236 tcp:9235
+curl --fail http://127.0.0.1:9236/api/v1/agent/status
+```
+
+The Android Debug APK embeds its managed assemblies/runtime so direct `adb install` works without an IDE's fast-deployment directory. Its default endpoint, `http://10.0.2.2:11434`, reaches the Mac's loopback Ollama server through the emulator gateway. `127.0.0.1` inside Android would refer to the emulator, not the Mac. Port **9236** is the forwarded Android automation port; the iOS preview can continue using **9235**.
+
+The same locally packaged artwork and font faces are used on Android. Settings use Android's `monospace` font rather than iOS-only Menlo. Release disables cleartext traffic and Android backups are disabled in both configurations. This setup does not expose Ollama beyond the host.
+
 ## Reproduce the checks and captures
 
 The ordinary service tests require no simulator or model:
@@ -117,7 +195,7 @@ The ordinary service tests require no simulator or model:
 dotnet test Bielik.Core.Tests/Bielik.Core.Tests.csproj
 ```
 
-They cover local-only endpoints, the Release HTTPS policy, exact-model enforcement, NDJSON streaming, malformed and truncated responses, cancellation, and whole-turn history bounds. The verified service suite has **46 passing cases**.
+They cover local-only endpoints, the Android gateway, the Release HTTPS policy, exact-model enforcement, NDJSON streaming, malformed and truncated responses, cancellation, and whole-turn history bounds. MEAI cases additionally verify response aggregation, token usage, metadata, endpoint changes, unsupported-input rejection and disposal of an in-flight response. The verified service suite has **69 passing cases**.
 
 Run actual inference probes against the installed model:
 
@@ -143,7 +221,7 @@ The [raw CPU evaluation](media/model-evaluation.json), [original native UI evide
 | Generated C# | Correct implementation, but **failed the no-Markdown instruction** |
 | Compiled C# body | [7/7 checks passed](media/generated-code-checks.txt), including negative values, empty input, `long` overflow safety and null rejection; only enclosing fences were removed |
 
-Substantive direct CPU responses ran at approximately **19-25 tokens/second**. The original native explanation measured **21.1 tokens/second**; the refreshed website-style recording measured **19.3 tokens/second**. Tiny replies have noisier rates. The model-probe command intentionally exits **1** for the observed strict-JSON failure; that is a model-quality finding, not a failing application test. Do not treat instruction-only output as guaranteed machine-readable JSON or executable source. The model's claims about faster execution, improved privacy or reduced energy use are not guarantees; they depend on the deployment.
+Substantive direct CPU responses ran at approximately **19-25 tokens/second**. The original native explanation measured **21.1 tokens/second**; the earlier website-style recording measured **19.3 tokens/second**. The current MEAI samples measured **20.4 tokens/second on Android** and **23.2 tokens/second on iOS**. These are individual Mac CPU runs, not phone-performance benchmarks. Tiny replies have noisier rates. The model-probe command intentionally exits **1** for the observed strict-JSON failure; that is a model-quality finding, not a failing application test. Do not treat instruction-only output as guaranteed machine-readable JSON or executable source. The model's claims about faster execution, improved privacy or reduced energy use are not guarantees; they depend on the deployment.
 
 With the Debug app installed and the local model ready:
 
@@ -153,9 +231,24 @@ python3 scripts/capture-ios.py \
   --output /tmp/bielik-capture
 ```
 
-The capture script resets this app's conversation and endpoint. All **15 native checks passed again with the website-style design**, including navigation, presets, public-endpoint rejection, a real streamed response, native clipboard copying, preserving conversation when rechecking an unchanged endpoint, conversation recall, generation cancellation, and recovery from an unavailable-server error without fallback. It captures screenshots, a simulator-only H.264 movie, and a JSON report. It uses a **non-forced, exclusive DevFlow lease** and releases it afterward. It never uses XCTest, desktop input, or another app's window.
+The capture script resets this app's conversation and endpoint. The historical website-style iOS recording passed **15 native checks**, including navigation, presets, public-endpoint rejection, a real streamed response, native clipboard copying, preserving conversation when rechecking an unchanged endpoint, conversation recall, generation cancellation, and recovery from an unavailable-server error without fallback. The current MEAI run adds explicit provider-policy verification on both platforms. Captures use a **non-forced, exclusive DevFlow lease** and release it afterward. They never use XCTest, desktop input, or another app's window.
 
 The separate [branding report](media/website-style/branding-report.json) checks official artwork placement, accessible image descriptions, 44-point minimum touch targets and home-to-settings navigation using native `windowBounds`, not unscrolled layout coordinates. The [compact-phone report](media/website-style/compact-report.json) and [compact screenshots](media/website-style/compact-screenshots) verify the 375 × 667-point iPhone SE layout, reachable scrollable controls and pinned composer. The compact chat screenshot is intentionally scrolled to show all presets. These additional layout captures make no inference claim.
+
+The shared native runner now supports both platforms:
+
+```bash
+python3 scripts/capture-android.py \
+  --device "$BIELIK_ANDROID" --agent-port 9236 \
+  --output /tmp/bielik-android-capture
+python3 scripts/capture-ios.py \
+  --simulator "$BIELIK_SIMULATOR" --agent-port 9235 \
+  --output /tmp/bielik-ios-meai-capture
+```
+
+The new run includes the MEAI/Essentials policy screen. Android clipboard verification pastes the actual system clipboard into the native editor; it does not assume copying succeeded. Recording uses the device's `screenrecord` process, stops only its known PID, pulls the completed MP4 and removes only that owned temporary file. iOS continues using `simctl`, never XCTest. The scripts acquire non-forced DevFlow leases and release them on exit.
+
+All **16 current native checks passed on each platform**: [Android report](media/android-meai/android/ui-report.json) and [iOS report](media/android-meai/ios/ui-report.json). The separate [Android progress report](media/android-meai/android/progress-report.json) and [iOS progress report](media/android-meai/ios/progress-report.json) each contain nine UI-only checks and make no generation claim. [Compact Android evidence](media/android-meai/android/compact-report.json) verifies reachable hero actions, a pinned 48-point composer/send control, and scrollable Essentials diagnostics at 360 x 640 points; its [screenshots](media/android-meai/android/compact-screenshots) likewise make no inference claim.
 
 Add `--tour-only` for a UI progress recording before weights are installed; that mode explicitly makes no inference claim. Use a dedicated simulator for either mode.
 
@@ -169,26 +262,31 @@ ffprobe -v error -show_entries format=duration,size \
   /tmp/bielik-capture/local-bielik-walkthrough-small.mp4
 ```
 
-The original [UI progress movie](media/progress/ui-progress.mp4) documents the native app before inference was available. The [current UI tour](media/website-style/ui-progress.mp4) shows the website-style interface separately from the [fresh actual-inference walkthrough](media/website-style/local-bielik-walkthrough.mp4). These are simulator recordings, not mockups.
+The original [UI progress movie](media/progress/ui-progress.mp4) documents the native app before inference was available. Current [Android](media/android-meai/android/ui-progress.mp4) and [iOS](media/android-meai/ios/ui-progress.mp4) tours show the website-style interface separately from the actual-inference walkthroughs. The Android walkthrough is 41.8 seconds; the iOS walkthrough is 31.9 seconds. All four current movies are H.264 at 720 pixels wide and have been fully decoded after compression. They are actual virtual-device recordings, not mockups.
 
-## Release and physical iPhones
+## Release and physical phones
 
 Release builds contain no DevFlow agent and no cleartext transport exceptions. Restore separately when changing configuration, because the Debug-only package references affect NuGet assets:
 
 ```bash
-dotnet restore Bielik/Bielik.csproj \
-  --runtime iossimulator-arm64 -p:Configuration=Release
+dotnet restore Bielik/Bielik.csproj -p:Configuration=Release
 dotnet build Bielik/Bielik.csproj --no-restore --target:Rebuild \
   --framework net11.0-ios --configuration Release \
   -p:RuntimeIdentifier=iossimulator-arm64 \
   -p:EnableCodeSigning=true -p:CodesignKey=-
+
+dotnet build Bielik/Bielik.csproj --no-restore \
+  --framework net11.0-android --configuration Release \
+  -p:RuntimeIdentifier=android-arm64 -p:AndroidPackageFormats=apk
 ```
 
-Repeat the Debug restore before switching back to Debug. The Release build has been verified with zero warnings or errors and without development-agent assemblies.
+Repeat the Debug restore before switching back to Debug. Both Debug and Release targets build with zero warnings or errors. The final Release apps were installed and cold-started on their respective virtual devices; both rendered the discovery screen, had no development agent, and retained their strict transport policy.
 
 On a physical iPhone, `127.0.0.1` means the phone, **not the Mac**. Use a private-IP HTTPS reverse proxy on the same trusted LAN, with a valid certificate trusted by iOS, forwarding to loopback Ollama. Keep Ollama itself on loopback, do not expose either server to the internet, and do not disable certificate validation. Release rejects a previously saved HTTP address with an explicit error. Device provisioning requires your Apple signing identity.
 
-Physical-device deployment, TLS provisioning, and App Store distribution are not part of the verified simulator setup. There is no embedded 11B inference engine in this app.
+On physical Android hardware, `10.0.2.2` is not the Mac gateway; use the same private-IP HTTPS approach with a certificate trusted by Android. The verified APK is ARM64. Release rejects saved HTTP endpoints at the shared policy layer and also sets `android:usesCleartextTraffic="false"`. Do not publish using the SDK's development signing key; configure your own release signing identity first.
+
+Physical-device deployment, TLS provisioning, and App Store/Play Store distribution are not part of the verified virtual-device setup. There is no embedded 11B inference engine in this app.
 
 ## Privacy and implementation boundaries
 

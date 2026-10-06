@@ -4,12 +4,12 @@ namespace Bielik.Core;
 
 public sealed record ChatMessage(string Role, string Content);
 
-public sealed record GenerationMetrics(int Tokens, long DurationNanoseconds)
+public sealed record GenerationMetrics(int Tokens, long DurationNanoseconds, int? InputTokens = null)
 {
     public double TokensPerSecond => DurationNanoseconds > 0 ? Tokens * 1_000_000_000d / DurationNanoseconds : 0;
 }
 
-public sealed record ChatChunk(string Text, bool IsComplete, GenerationMetrics? Metrics);
+public sealed record ChatChunk(string Text, bool IsComplete, GenerationMetrics? Metrics, string? FinishReason = null);
 
 internal sealed record ChatRequest(string Model, ChatMessage[] Messages, bool Stream, ChatOptions Options, string KeepAlive);
 internal sealed record ChatOptions(double Temperature, int NumCtx, int NumPredict, int NumGpu);
@@ -21,7 +21,9 @@ internal sealed record StreamResponse(
     bool Done,
     string? Error,
     int EvalCount,
-    long EvalDuration);
+    long EvalDuration,
+    int? PromptEvalCount,
+    string? DoneReason);
 
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.SnakeCaseLower)]
 [JsonSerializable(typeof(ChatRequest))]

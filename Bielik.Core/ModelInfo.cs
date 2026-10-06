@@ -7,6 +7,7 @@ public static class ModelInfo
     public const string Version = "v2.6 Instruct";
     public const string Quantization = "Q4_K_M";
     public const string DefaultEndpoint = "http://127.0.0.1:11434";
+    public const string AndroidEmulatorEndpoint = "http://10.0.2.2:11434";
     public const string PullCommand = "ollama pull " + Id;
     public const string ModelCard = "https://huggingface.co/speakleash/Bielik-11B-v2.6-Instruct-GGUF";
     public const string SystemPrompt =

@@ -1,0 +1,10 @@
+{
+  "platform": "android",
+  "installed_release_started": true,
+  "saved_http_rejected": true,
+  "error": "Ta wersja wymaga HTTPS. HTTP jest dostępny tylko w lokalnym buildzie Debug.",
+  "devflow_agent_present": false,
+  "cleartext_allowed": false,
+  "backups_allowed": false,
+  "xctest_used": false
+}

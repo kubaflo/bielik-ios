@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Bielik.Core;
+using Bielik.Services;
 using Microsoft.Extensions.Logging;
 
 namespace Bielik.ViewModels;
@@ -8,14 +9,13 @@ public sealed class AppState : ObservableObject
 {
 #if DEBUG
     private const bool AllowInsecureHttp = true;
-    private const string InitialAddress = ModelInfo.DefaultEndpoint;
 #else
     private const bool AllowInsecureHttp = false;
-    private const string InitialAddress = "https://127.0.0.1:11434";
 #endif
     private readonly BielikClient _client;
     private readonly IPreferences _preferences;
     private readonly ILogger<AppState> _logger;
+    private readonly EssentialsAiInfo _essentialsAi;
     private string _addressDraft;
     private string _savedAddress;
     private string _error = "";
@@ -24,12 +24,13 @@ public sealed class AppState : ObservableObject
     private bool _isReady;
     private bool _isGenerating;
 
-    public AppState(BielikClient client, IPreferences preferences, ILogger<AppState> logger)
+    public AppState(BielikClient client, IPreferences preferences, ILogger<AppState> logger, EssentialsAiInfo essentialsAi)
     {
         _client = client;
         _preferences = preferences;
         _logger = logger;
-        _savedAddress = preferences.Get("bielik.local-endpoint", InitialAddress);
+        _essentialsAi = essentialsAi;
+        _savedAddress = preferences.Get("bielik.local-endpoint", PlatformExperience.InitialAddress);
         _addressDraft = _savedAddress;
         ConnectCommand = new Command(async () => await CheckConnectionAsync(), () => CanConfigure);
         SaveCommand = new Command(async () => await SaveAsync(), () => CanConfigure);
@@ -47,6 +48,11 @@ public sealed class AppState : ObservableObject
     public IReadOnlyList<PromptIdea> Ideas => PromptCatalog.All;
     public string ModelName => $"{ModelInfo.Name} · {ModelInfo.Version}";
     public string InstallCommand => ModelInfo.PullCommand;
+    public string ClientName => PlatformExperience.ClientName;
+    public string ConnectionHelp => PlatformExperience.ConnectionHelp;
+    public string MonospaceFont => PlatformExperience.MonospaceFont;
+    public string PlatformFooter => $".NET 11 PREVIEW  /  {PlatformExperience.ClientName.ToUpperInvariant()}\nNieoficjalny projekt inspirowany bielik.ai";
+    public string EssentialsAiDescription => _essentialsAi.Description;
     public string Digest => _digest.Length > 12 ? _digest[..12] : _digest;
     public bool IsReady => _isReady;
     public bool IsChecking => _isChecking;

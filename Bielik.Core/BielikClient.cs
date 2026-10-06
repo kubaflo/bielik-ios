@@ -95,7 +95,8 @@ public sealed class BielikClient(HttpClient httpClient)
             }
 
             yield return new ChatChunk(text, chunk.Done,
-                chunk.Done ? new GenerationMetrics(chunk.EvalCount, chunk.EvalDuration) : null);
+                chunk.Done ? new GenerationMetrics(chunk.EvalCount, chunk.EvalDuration, chunk.PromptEvalCount) : null,
+                chunk.Done ? chunk.DoneReason : null);
             if (chunk.Done)
             {
                 yield break;

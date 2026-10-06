@@ -64,10 +64,19 @@
             <Border Padding="20" StrokeThickness="0" BackgroundColor="{StaticResource NavyLight}">
                 <VerticalStackLayout Spacing="11">
                     <Label Text="Jeden model. Bez zamienników." FontFamily="{StaticResource BodySemiboldFont}" FontSize="17" />
-                    <Label Text="Ta aplikacja korzysta wyłącznie z Bielik 11B v2.6. Model działa w Ollamie na Twoim Macu. iPhone jest natywnym interfejsem, nie uruchamia wag modelu."
+                    <Label Text="Ta aplikacja korzysta wyłącznie z Bielik 11B v2.6. Model działa w Ollamie na Twoim Macu. Telefon jest natywnym interfejsem, nie uruchamia wag modelu."
                            FontSize="14" TextColor="{StaticResource Muted}" LineHeight="1.2" />
                     <Label Text="8192 tokenów kontekstu · temperatura 0,1&#10;Inferencja CPU · historia tylko w pamięci aplikacji."
                            Style="{StaticResource Caption}" FontSize="12" />
+                </VerticalStackLayout>
+            </Border>
+            <Border Padding="18">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Microsoft.Extensions.AI" FontFamily="{StaticResource BodySemiboldFont}" FontSize="17" />
+                    <Label Text="IChatClient · lokalny Bielik · strumieniowanie i anulowanie na iOS oraz Androidzie."
+                           FontSize="14" LineHeight="1.2" AutomationId="meai-provider" />
+                    <Label Text="{Binding EssentialsAiDescription}" Style="{StaticResource Caption}" FontSize="13"
+                           LineHeight="1.2" AutomationId="essentials-ai-status" />
                 </VerticalStackLayout>
             </Border>
             <Button Text="Oficjalna karta modelu   →" Clicked="OnModelCardClicked" AutomationId="open-model-card" />

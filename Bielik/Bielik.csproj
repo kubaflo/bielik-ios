@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net11.0-ios</TargetFramework>
+        <TargetFrameworks>net11.0-ios;net11.0-android</TargetFrameworks>
         <OutputType>Exe</OutputType>
         <RootNamespace>Bielik</RootNamespace>
         <UseMaui>true</UseMaui>
@@ -9,7 +9,8 @@
         <ApplicationId>dev.bielik.companion</ApplicationId>
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
-        <SupportedOSPlatformVersion>17.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">17.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
         <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
         <MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
     </PropertyGroup>
@@ -22,11 +23,18 @@
         <MauiFont Include="Resources/Fonts/*.otf" />
         <MauiAsset Include="Resources/Raw/**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
         <PackageReference Include="Microsoft.Maui.Controls" />
-        <ProjectReference Include="../Bielik.Core/Bielik.Core.csproj" />
+        <PackageReference Include="Microsoft.Maui.Essentials.AI" />
+        <ProjectReference Include="../Bielik.Core/Bielik.Core.csproj"
+                          GlobalPropertiesToRemove="TargetFramework;TargetFrameworks;RuntimeIdentifier;RuntimeIdentifiers" />
     </ItemGroup>
     <ItemGroup Condition="'$(Configuration)' == 'Debug'">
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" />
         <PackageReference Include="Microsoft.Maui.DevFlow.Agent" />
-        <PartialAppManifest Include="Platforms/iOS/Info.Debug.plist" />
+        <PartialAppManifest Include="Platforms/iOS/Info.Debug.plist"
+                            Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'" />
     </ItemGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+        <AndroidManifest>Platforms/Android/AndroidManifest.Debug.xml</AndroidManifest>
+        <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    </PropertyGroup>
 </Project>

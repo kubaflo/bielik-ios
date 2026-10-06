@@ -2,13 +2,16 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text;
 using Bielik.Core;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Logging;
+using ChatMessage = Microsoft.Extensions.AI.ChatMessage;
 
 namespace Bielik.ViewModels;
 
 public sealed class ChatViewModel : ObservableObject
 {
     private readonly BielikClient _client;
+    private readonly IChatClient _chatClient;
     private readonly ILogger<ChatViewModel> _logger;
     private readonly List<ChatMessage> _history = [];
     private CancellationTokenSource? _generation;
@@ -17,9 +20,10 @@ public sealed class ChatViewModel : ObservableObject
     private bool _isBusy;
     private int _sequence;
 
-    public ChatViewModel(BielikClient client, AppState state, ILogger<ChatViewModel> logger)
+    public ChatViewModel(BielikClient client, IChatClient chatClient, AppState state, ILogger<ChatViewModel> logger)
     {
         _client = client;
+        _chatClient = chatClient;
         State = state;
         _logger = logger;
         SendCommand = new Command(async () => await SendAsync(), () => CanSend);
@@ -117,25 +121,37 @@ public sealed class ChatViewModel : ObservableObject
         try
         {
             await _client.CheckConnectionAsync(endpoint, cancellation.Token);
-            var conversation = _history.Append(new ChatMessage("user", question)).ToArray();
-            await foreach (var chunk in _client.StreamAsync(endpoint, conversation, cancellation.Token))
+            var conversation = _history.Append(new ChatMessage(ChatRole.User, question)).ToArray();
+            GenerationMetrics? metrics = null;
+            var completed = false;
+            await foreach (var update in _chatClient.GetStreamingResponseAsync(conversation, cancellationToken: cancellation.Token))
             {
-                text.Append(chunk.Text);
+                text.Append(update.Text);
                 answer.Text = text.ToString();
-                if (chunk.IsComplete)
+                completed |= update.FinishReason is not null;
+                if (update.AdditionalProperties?.TryGetValue(BielikChatClient.MetricsProperty, out var value) == true &&
+                    value is GenerationMetrics generationMetrics)
                 {
-                    _history.Add(new ChatMessage("user", question));
-                    _history.Add(new ChatMessage("assistant", answer.Text));
-                    if (_history.Count > 12)
-                    {
-                        _history.RemoveRange(0, _history.Count - 12);
-                    }
-
-                    answer.Status = chunk.Metrics is { } metrics
-                        ? $"BIELIK · {metrics.TokensPerSecond.ToString("F1", CultureInfo.GetCultureInfo("pl-PL"))} TOK/S"
-                        : "BIELIK · LOKALNIE";
+                    metrics = generationMetrics;
                 }
             }
+
+            cancellation.Token.ThrowIfCancellationRequested();
+            if (!completed || string.IsNullOrWhiteSpace(answer.Text))
+            {
+                throw new EndOfStreamException("Bielik nie zakończył odpowiedzi. Spróbuj ponownie.");
+            }
+
+            _history.Add(new ChatMessage(ChatRole.User, question));
+            _history.Add(new ChatMessage(ChatRole.Assistant, answer.Text));
+            if (_history.Count > 12)
+            {
+                _history.RemoveRange(0, _history.Count - 12);
+            }
+
+            answer.Status = metrics is not null
+                ? $"BIELIK · {metrics.TokensPerSecond.ToString("F1", CultureInfo.GetCultureInfo("pl-PL"))} TOK/S"
+                : "BIELIK · LOKALNIE";
         }
         catch (OperationCanceledException) when (cancellation.IsCancellationRequested)
         {

@@ -77,7 +77,7 @@
                         <Button Text="Pomyślmy razem w C#   →" Style="{StaticResource OutlineButton}" FontSize="13"
                                 Clicked="OnIdeaClicked" CommandParameter="code" AutomationId="chat-idea-code" />
                     </VerticalStackLayout>
-                    <Label Text="Bielik 11B v2.6 · Q4_K_M&#10;Inferencja na Twoim Macu, nie na iPhonie."
+                    <Label Text="Bielik 11B v2.6 · Q4_K_M&#10;Inferencja na Twoim Macu, nie na telefonie."
                            Style="{StaticResource Caption}" FontSize="11" HorizontalTextAlignment="Center" />
                 </VerticalStackLayout>
             </ScrollView>

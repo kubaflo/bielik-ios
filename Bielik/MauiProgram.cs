@@ -1,7 +1,9 @@
 using Bielik.Core;
+using Bielik.Services;
 using Bielik.ViewModels;
 using Bielik.Views;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.AI;
 #if DEBUG
 using Microsoft.Maui.DevFlow.Agent;
 #endif
@@ -23,8 +25,12 @@ public static class MauiProgram
             });
         builder.Services.AddSingleton(_ => BielikClient.CreateLocalHttpClient());
         builder.Services.AddSingleton<BielikClient>();
+        builder.Services.AddSingleton<EssentialsAiInfo>();
         builder.Services.AddSingleton<IPreferences>(Preferences.Default);
         builder.Services.AddSingleton<AppState>();
+        builder.Services.AddSingleton<IChatClient>(services => new BielikChatClient(
+            services.GetRequiredService<BielikClient>(),
+            () => services.GetRequiredService<AppState>().Endpoint));
         builder.Services.AddSingleton<ChatViewModel>();
         builder.Services.AddSingleton<DiscoverPage>();
         builder.Services.AddSingleton<ChatPage>();

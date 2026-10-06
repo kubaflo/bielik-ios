@@ -17,6 +17,7 @@ public class LocalEndpointTests
     [InlineData("http://localhost:11434")]
     [InlineData("https://192.168.1.20:11434")]
     [InlineData("http://10.0.0.4:11434/")]
+    [InlineData(ModelInfo.AndroidEmulatorEndpoint)]
     [InlineData("https://172.16.0.1:443")]
     [InlineData("https://172.31.255.254")]
     [InlineData("http://[::1]:11434")]

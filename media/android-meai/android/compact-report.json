@@ -1,0 +1,67 @@
+{
+  "recorded_at": "2026-10-06T00:00:15.013098+00:00",
+  "platform": "android",
+  "viewport_points": [
+    360,
+    640
+  ],
+  "physical_pixels": [
+    720,
+    1280
+  ],
+  "density": 2,
+  "steps": [
+    {
+      "name": "start-chat",
+      "status": "passed",
+      "window_bounds": {
+        "x": 24,
+        "y": 365.5,
+        "width": 312,
+        "height": 52
+      }
+    },
+    {
+      "name": "setup-local-server",
+      "status": "passed",
+      "window_bounds": {
+        "x": 24,
+        "y": 427.5,
+        "width": 312,
+        "height": 52
+      }
+    },
+    {
+      "name": "chat-input",
+      "status": "passed",
+      "window_bounds": {
+        "x": 37,
+        "y": 472,
+        "width": 235,
+        "height": 48
+      }
+    },
+    {
+      "name": "send-message",
+      "status": "passed",
+      "window_bounds": {
+        "x": 280,
+        "y": 472,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "name": "reachable-essentials-policy",
+      "status": "passed",
+      "window_bounds": {
+        "x": 43,
+        "y": 318.5,
+        "width": 274,
+        "height": 77
+      }
+    }
+  ],
+  "xctest_used": false,
+  "local_model_exercised": false
+}

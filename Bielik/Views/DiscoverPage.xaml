@@ -17,25 +17,20 @@
                 <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
                     <Label Text="LOKALNY KLIENT" Style="{StaticResource Eyebrow}" FontSize="8"
                            TextColor="{StaticResource AccentInk}" HorizontalTextAlignment="End" />
-                    <Label Text="Natywne iOS" Style="{StaticResource Caption}" FontSize="11" HorizontalTextAlignment="End" />
+                    <Label Text="{Binding ClientName}" Style="{StaticResource Caption}" FontSize="11" HorizontalTextAlignment="End" />
                 </VerticalStackLayout>
             </Grid>
         </Border>
         <ScrollView Grid.Row="1" AutomationId="discover-scroll">
             <VerticalStackLayout Spacing="24" Padding="0,0,0,26">
-                <Grid>
+                <Grid AutomationId="discover-hero">
                     <AbsoluteLayout InputTransparent="True">
-                        <Image Source="official_bielik_background.png" Aspect="AspectFill"
+                        <Image Source="official_bielik_background.png" Aspect="AspectFill" AutomationId="discover-official-background"
+                               AutomationProperties.IsInAccessibleTree="False"
                                AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" />
-                        <Border StrokeThickness="0" StrokeShape="Rectangle"
-                                AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Color="#D1FFFFFF" Offset="0" />
-                                    <GradientStop Color="#80FFFFFF" Offset="1" />
-                                </LinearGradientBrush>
-                            </Border.Background>
-                        </Border>
+                        <Image Source="hero_white_tint.png" Aspect="Fill" AutomationId="discover-gradient-tint"
+                               AutomationProperties.IsInAccessibleTree="False"
+                               AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" />
                     </AbsoluteLayout>
                     <VerticalStackLayout Padding="24,24,24,26" Spacing="14">
                         <Label Text="POLSKI MODEL. OTWARTE MOŻLIWOŚCI." Style="{StaticResource Eyebrow}"
@@ -43,7 +38,7 @@
                         <Label Text="Polska AI.&#10;Twój Bielik." Style="{StaticResource Display}"
                                FontSize="36" TextColor="{StaticResource Accent}" LineHeight="1.08"
                                SemanticProperties.HeadingLevel="Level1" AutomationId="discover-title" />
-                        <Label Text="Odkrywaj, twórz i rozmawiaj. Bielik działa na Twoim Macu, a Ty korzystasz z niego na iPhonie."
+                        <Label Text="Odkrywaj, twórz i rozmawiaj. Bielik działa na Twoim Macu, a Ty korzystasz z niego na telefonie."
                                FontSize="16" LineHeight="1.2" />
                         <Image Source="official_bielik_mascot.png" Aspect="AspectFit" WidthRequest="182" HeightRequest="192"
                                HorizontalOptions="Center" AutomationId="discover-official-illustration"
