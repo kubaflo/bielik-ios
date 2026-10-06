@@ -162,6 +162,7 @@ class App:
 
 def exercise(app, tour_only):
     app.navigate("discover")
+    app.scroll("discover-scroll", -10000)
     title = app.element("discover-title")
     if title.get("bounds", {}).get("width", 0) <= 0:
         raise AssertionError("The discover page was not rendered.")
@@ -180,6 +181,13 @@ def exercise(app, tour_only):
     app.passed("native_navigation_and_presets", screenshot=app.screenshot("03-chat-empty"))
 
     app.navigate("model")
+    app.scroll("model-scroll", -10000)
+    artwork = app.element("model-official-network")["windowBounds"]
+    window = app.request("/agent/status")["device"]
+    if (artwork["width"] <= 0 or artwork["height"] <= 0 or artwork["x"] < 0 or artwork["y"] < 0
+            or artwork["x"] + artwork["width"] > window["windowWidth"]
+            or artwork["y"] + artwork["height"] > window["windowHeight"]):
+        raise AssertionError("The pinned model's official artwork must be visible in the native capture.")
     app.passed("pinned_model_screen", screenshot=app.screenshot("04-model"))
     app.scroll("model-scroll", 350)
     app.passed("local_inference_disclosure", screenshot=app.screenshot("05-model-details"))

@@ -221,7 +221,7 @@ The [raw CPU evaluation](media/model-evaluation.json), [original native UI evide
 | Generated C# | Correct implementation, but **failed the no-Markdown instruction** |
 | Compiled C# body | [7/7 checks passed](media/generated-code-checks.txt), including negative values, empty input, `long` overflow safety and null rejection; only enclosing fences were removed |
 
-Substantive direct CPU responses ran at approximately **19-25 tokens/second**. The original native explanation measured **21.1 tokens/second**; the earlier website-style recording measured **19.3 tokens/second**. The current MEAI samples measured **20.4 tokens/second on Android** and **23.2 tokens/second on iOS**. These are individual Mac CPU runs, not phone-performance benchmarks. Tiny replies have noisier rates. The model-probe command intentionally exits **1** for the observed strict-JSON failure; that is a model-quality finding, not a failing application test. Do not treat instruction-only output as guaranteed machine-readable JSON or executable source. The model's claims about faster execution, improved privacy or reduced energy use are not guarantees; they depend on the deployment.
+Substantive direct CPU responses ran at approximately **19-25 tokens/second**. The original native explanation measured **21.1 tokens/second**; the earlier website-style recording measured **19.3 tokens/second**. The current MEAI samples measured **21.7 tokens/second on Android** and **23.2 tokens/second on iOS**. These are individual Mac CPU runs, not phone-performance benchmarks. Tiny replies have noisier rates. The model-probe command intentionally exits **1** for the observed strict-JSON failure; that is a model-quality finding, not a failing application test. Do not treat instruction-only output as guaranteed machine-readable JSON or executable source. The model's claims about faster execution, improved privacy or reduced energy use are not guarantees; they depend on the deployment.
 
 With the Debug app installed and the local model ready:
 
@@ -246,7 +246,7 @@ python3 scripts/capture-ios.py \
   --output /tmp/bielik-ios-meai-capture
 ```
 
-The new run includes the MEAI/Essentials policy screen. Android clipboard verification pastes the actual system clipboard into the native editor; it does not assume copying succeeded. Recording uses the device's `screenrecord` process, stops only its known PID, pulls the completed MP4 and removes only that owned temporary file. iOS continues using `simctl`, never XCTest. The scripts acquire non-forced DevFlow leases and release them on exit.
+The new run includes the MEAI/Essentials policy screen. Discovery/model scroll positions are reset before their overview captures, and the official network illustration is checked against actual window bounds, so repeated tours do not mistake a retained scrolled panel for the model overview. Android clipboard verification pastes the actual system clipboard into the native editor; it does not assume copying succeeded. Recording uses the device's `screenrecord` process, stops only its known PID, pulls the completed MP4 and removes only that owned temporary file. iOS continues using `simctl`, never XCTest. The scripts acquire non-forced DevFlow leases and release them on exit.
 
 All **16 current native checks passed on each platform**: [Android report](media/android-meai/android/ui-report.json) and [iOS report](media/android-meai/ios/ui-report.json). The separate [Android progress report](media/android-meai/android/progress-report.json) and [iOS progress report](media/android-meai/ios/progress-report.json) each contain nine UI-only checks and make no generation claim. [Compact Android evidence](media/android-meai/android/compact-report.json) verifies reachable hero actions, a pinned 48-point composer/send control, and scrollable Essentials diagnostics at 360 x 640 points; its [screenshots](media/android-meai/android/compact-screenshots) likewise make no inference claim.
 
@@ -262,7 +262,7 @@ ffprobe -v error -show_entries format=duration,size \
   /tmp/bielik-capture/local-bielik-walkthrough-small.mp4
 ```
 
-The original [UI progress movie](media/progress/ui-progress.mp4) documents the native app before inference was available. Current [Android](media/android-meai/android/ui-progress.mp4) and [iOS](media/android-meai/ios/ui-progress.mp4) tours show the website-style interface separately from the actual-inference walkthroughs. The Android walkthrough is 41.8 seconds; the iOS walkthrough is 31.9 seconds. All four current movies are H.264 at 720 pixels wide and have been fully decoded after compression. They are actual virtual-device recordings, not mockups.
+The original [UI progress movie](media/progress/ui-progress.mp4) documents the native app before inference was available. Current [Android](media/android-meai/android/ui-progress.mp4) and [iOS](media/android-meai/ios/ui-progress.mp4) tours show the website-style interface separately from the actual-inference walkthroughs. The Android walkthrough is 52.2 seconds; the iOS walkthrough is 31.9 seconds. All four current movies are H.264 at 720 pixels wide and have been fully decoded after compression. They are actual virtual-device recordings, not mockups.
 
 ## Release and physical phones
 

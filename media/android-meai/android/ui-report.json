@@ -1,9 +1,9 @@
 {
-  "recorded_at": "2026-10-05T23:52:30.627769+00:00",
+  "recorded_at": "2026-10-06T00:24:20.800082+00:00",
   "simulator": "emulator-5580",
   "platform": "android",
   "app": {
-    "timestamp": "2026-10-05T23:51:47.7163843+00:00",
+    "timestamp": "2026-10-06T00:23:27.9380919+00:00",
     "agent": {
       "name": "Microsoft.Maui.DevFlow.Agent",
       "version": "0.1.0-preview.12.26421.1+78e85a5cb9c7a3efaaacf85d6176ce971f40b7d6",
@@ -27,7 +27,7 @@
       "packageId": "dev.bielik.companion",
       "version": "1.0",
       "build": "1",
-      "processId": 14231
+      "processId": 18767
     },
     "capabilities": {
       "ui": true,
@@ -44,7 +44,7 @@
       "mutationLease": true
     },
     "running": true,
-    "route": "//chat",
+    "route": "//discover",
     "cdpReady": false,
     "cdpWebViewCount": 0,
     "profiler": {
@@ -122,8 +122,8 @@
     {
       "name": "real_polish_streamed_reply",
       "status": "passed",
-      "reply": "Lokalna sztuczna inteligencja (Local AI) to podejście, w którym algorytmy uczenia maszynowego są wdrażane i wykonywane na urządzeniach lokalnych (np. smartfonach, komputerach), a nie w chmurze. Pozwala to na przetwarzanie danych bezpośrednio na miejscu, co zwiększa prywatność, zmniejsza opóźnienia i ogranicza potrzebę transmisji danych.",
-      "metrics": "BIELIK · 20,4 TOK/S",
+      "reply": "Lokalna sztuczna inteligencja to system AI, który przetwarza dane i podejmuje decyzje bezpośrednio na urządzeniu lub w lokalnej sieci, bez konieczności przesyłania danych do chmury. Kluczowe cechy to: szybkość, niezależność od połączenia internetowego i ochrona prywatności.",
+      "metrics": "BIELIK · 21,7 TOK/S",
       "screenshot": "screenshots/07-real-chat.png"
     },
     {
