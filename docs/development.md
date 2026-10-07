@@ -267,7 +267,38 @@ ffprobe -v error -show_entries format=duration,size \
 
 The original [UI progress movie](../media/progress/ui-progress.mp4) documents the native app before inference was available. The [Android](../media/android-meai/android/ui-progress.mp4) and [iOS](../media/android-meai/ios/ui-progress.mp4) verification tours show the website-style interface separately from the actual-inference walkthroughs. The Android walkthrough is 52.2 seconds; the iOS walkthrough is 31.9 seconds. Those four verification movies are H.264 at 720 pixels wide and have been fully decoded after compression. They are actual virtual-device recordings, not mockups.
 
-The newer product demos for [iOS](../media/demos/ios-demo.mp4) and [Android](../media/demos/android-demo.mp4) cover discovery, ideas, model details, connection settings, a real Polish reply and copying it. Both are portrait H.264 videos at **1080 x 1920, 24 fps**, with branded title/closing cards and chapter captions. Native footage stays at its original speed; replies are neither mocked nor replayed. Inference is on the Mac CPU, not the phone. The [iOS capture report](../media/demos/ios-demo.json) and [Android capture report](../media/demos/android-demo.json) preserve prompts, untouched responses, timing, recording hashes and native clipboard verification. Dedicated recording devices kept manual-testing sessions untouched; no XCTest or desktop input was used.
+### Reels-style demos
+
+The [iOS reel](../media/demos/ios-demo.mp4) and [Android reel](../media/demos/android-demo.mp4) are **30.5-second, 1080 x 1920, 60 fps** product edits. Ten short scenes combine kinetic Polish typography, animated camera moves, native UI detail crops, editorial wipes, official website artwork and an original procedural soundtrack. The visual direction follows the earlier [Klavi HTML-composition reference](https://lnkd.in/p/e4F-NJAc), using Bielik's own colors and fonts.
+
+These are **edited recordings, not new inference runs or speed benchmarks**. Pauses and navigation are cut, and completed-reply footage is revisited for its detail shot. All moving native clips play at **1x**; opening/closing compositions also use still frames from the real recordings. Replies are not fabricated or retyped. Bielik inference remains on the Mac CPU, not the phone.
+
+The unchanged [raw iOS screen recording](../media/demos/ios-raw.mp4) is 40.805 seconds; the [raw Android screen recording](../media/demos/android-raw.mp4) is 45.044 seconds. Neither has presentation overlays, music, cuts or speed changes. Their original [iOS](../media/demos/ios-raw.json) and [Android](../media/demos/android-raw.json) capture reports preserve recording hashes, prompts, untouched responses, native clipboard verification and device identity. Both were captured on October 6 using dedicated recording devices; the October 7 reel edit did not run the app, model, simulator or desktop automation again.
+
+The reel [iOS report](../media/demos/ios-demo.json) and [Android report](../media/demos/android-demo.json) add exact source-to-output shot maps, rendering hashes and delivery properties. The [edit map](../scripts/reels/edit-map.json) is tied to the raw recording hashes. Its cuts are calibrated against visible movie frames rather than assuming the capture script's wall-clock chapter times exactly match the native recorder's media clock.
+
+Reproduce the edits from the repository root with Python, FFmpeg and Playwright's **headless WebKit** renderer. No interactive browser window, Chromium video-compositor layer, XCTest or simulator is involved. Fonts and artwork load only from a temporary loopback server with an explicit resource allowlist. Decoded native images are painted into a deterministic HTML canvas; each delivered video frame is compared with its rendered reference to catch missing layers or tiled frames.
+
+Install the optional rendering dependencies only if needed:
+
+```bash
+python3 -m pip install -r scripts/requirements-reels.txt
+python3 -m playwright install webkit
+```
+
+```bash
+python3 scripts/render-reels.py \
+  --ios-recording media/demos/ios-raw.mp4 \
+  --ios-report media/demos/ios-raw.json \
+  --android-recording media/demos/android-raw.mp4 \
+  --android-report media/demos/android-raw.json \
+  --work-dir /tmp/bielik-reels/work \
+  --output /tmp/bielik-reels/output
+```
+
+Add `--preview` to generate storyboard contact sheets without encoding videos. To intentionally replace the repository demos, use `--output media/demos --replace`. Other captures require their own `--edit-map`: the renderer rejects a map calibrated for different source hashes. Intermediate image frames are streamed through memory instead of saved as a large image-sequence directory; temporary encoding files and the server are cleaned up when the command exits.
+
+The music is synthesized by [`soundtrack()`](../scripts/render-reels.py) at 120 BPM with original notes, percussion and transition sounds, then encoded as stereo AAC with a -16 LUFS normalization target. It contains no borrowed music, reference-video audio or generated speech. The [`composition.html`](../scripts/reels/composition.html) scene code and synthesis code are reproducible source, while the official Bielik artwork and bundled fonts retain the rights documented below.
 
 ## Release and physical phones
 

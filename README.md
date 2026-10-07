@@ -18,7 +18,7 @@
 
 ## See it in action
 
-Real native screenshots. The demos tour the app and stream an actual local Bielik reply.
+Two **30-second, 60 fps reels**: animated typography, native UI close-ups, and an original soundtrack. The chat footage shows a real local Bielik response, not a mocked conversation.
 
 <table>
   <tr>
@@ -27,22 +27,24 @@ Real native screenshots. The demos tour the app and stream an actual local Bieli
   </tr>
   <tr>
     <td align="center">
-      <img src="media/android-meai/ios/screenshots/01-discover.png" alt="iOS discovery screen with official Bielik eagle artwork" width="170" />
-      <img src="media/android-meai/ios/screenshots/07-real-chat.png" alt="iOS chat streaming a real local Bielik response" width="170" />
+      <a href="media/demos/ios-demo.mp4">
+        <img src="media/demos/ios-demo.jpg" alt="Bielik iOS reel: official eagle artwork and a real native iPhone screen" width="300" />
+      </a>
     </td>
     <td align="center">
-      <img src="media/android-meai/android/screenshots/01-discover.png" alt="Android discovery screen with official Bielik eagle artwork" width="170" />
-      <img src="media/android-meai/android/screenshots/07-real-chat.png" alt="Android chat streaming a real local Bielik response" width="170" />
+      <a href="media/demos/android-demo.mp4">
+        <img src="media/demos/android-demo.jpg" alt="Bielik Android reel: official eagle artwork and a real native Android screen" width="300" />
+      </a>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="media/demos/ios-demo.mp4">Watch the demo</a> &middot;
-      <a href="media/android-meai/ios/ui-progress.mp4">UI tour</a>
+      <a href="media/demos/ios-demo.mp4">Watch the reel</a> &middot;
+      <a href="media/demos/ios-raw.mp4">Raw screen recording</a>
     </td>
     <td align="center">
-      <a href="media/demos/android-demo.mp4">Watch the demo</a> &middot;
-      <a href="media/android-meai/android/ui-progress.mp4">UI tour</a>
+      <a href="media/demos/android-demo.mp4">Watch the reel</a> &middot;
+      <a href="media/demos/android-raw.mp4">Raw screen recording</a>
     </td>
   </tr>
 </table>

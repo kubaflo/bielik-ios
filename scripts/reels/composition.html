@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bielik MAUI · native reels</title>
+    <style>
+        @font-face {
+            font-family: Geologica;
+            src: url("../../Bielik/Resources/Fonts/Geologica-SemiBold.ttf");
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: SourceSans;
+            src: url("../../Bielik/Resources/Fonts/SourceSansPro-Regular.otf");
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: SourceSans;
+            src: url("../../Bielik/Resources/Fonts/SourceSansPro-Semibold.otf");
+            font-weight: 600;
+        }
+        html, body {
+            margin: 0;
+            width: 1080px;
+            height: 1920px;
+            overflow: hidden;
+            background: #091633;
+        }
+        canvas {
+            display: block;
+            width: 1080px;
+            height: 1920px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="reel" width="1080" height="1920" aria-label="Bielik MAUI product reel"></canvas>
+    <script>
+        "use strict";
+
+        const W = 1080;
+        const H = 1920;
+        const color = {
+            navy: "#091633",
+            ink: "#182337",
+            coral: "#E76450",
+            paper: "#FAF8F3",
+            slate: "#3B4556",
+            muted: "#ACB8CD",
+        };
+        const canvas = document.getElementById("reel");
+        const ctx = canvas.getContext("2d", { alpha: false });
+        const assets = {};
+        const footage = {};
+        let config;
+        let textBounds;
+        let nativeDraws;
+
+        const clamp = (v, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, v));
+        const ease = v => 1 - (1 - clamp(v)) ** 3;
+        const smooth = v => {
+            const p = clamp(v);
+            return p * p * (3 - 2 * p);
+        };
+        const lerp = (a, b, p) => a + (b - a) * p;
+        const arrival = (t, delay = 0, duration = 0.6) => ease((t - delay) / duration);
+
+        function image(url) {
+            return new Promise((resolve, reject) => {
+                const result = new Image();
+                result.onload = () => resolve(result);
+                result.onerror = () => reject(new Error(`Image failed to load: ${url.slice(0, 140)}`));
+                result.src = url;
+            });
+        }
+
+        function rounded(x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.roundRect(x, y, width, height, radius);
+        }
+
+        function text(value, x, y, size, fill = color.ink, options = {}) {
+            const { family = "Geologica", weight = 600, align = "left", opacity = 1 } = options;
+            ctx.save();
+            ctx.globalAlpha *= clamp(opacity);
+            ctx.font = `${weight} ${size}px ${family}`;
+            ctx.fillStyle = fill;
+            ctx.textAlign = align;
+            ctx.textBaseline = "alphabetic";
+            ctx.fillText(value, x, y);
+            const metrics = ctx.measureText(value);
+            const left = x - (align === "center" ? metrics.width / 2 : align === "right" ? metrics.width : 0);
+            textBounds.push({
+                value,
+                left,
+                right: left + metrics.width,
+                top: y - metrics.actualBoundingBoxAscent,
+                bottom: y + metrics.actualBoundingBoxDescent,
+            });
+            ctx.restore();
+        }
+
+        function line(value, x, y, size, fill, t, delay = 0) {
+            const p = arrival(t, delay);
+            ctx.save();
+            ctx.translate(0, (1 - p) * 58);
+            text(value, x, y, size, fill, { opacity: p });
+            ctx.restore();
+        }
+
+        function body(value, x, y, size, fill, options = {}) {
+            text(value, x, y, size, fill, { family: "SourceSans", weight: 400, ...options });
+        }
+
+        function pill(value, x, y, width, dark = true, size = 28) {
+            rounded(x, y, width, 62, 31);
+            ctx.fillStyle = dark ? color.navy : color.paper;
+            ctx.fill();
+            text(value, x + width / 2, y + 42, size, dark ? color.paper : color.navy, {
+                family: "SourceSans", align: "center",
+            });
+        }
+
+        function arrow(x, y, length, fill, progress = 1) {
+            ctx.save();
+            ctx.strokeStyle = fill;
+            ctx.lineWidth = 5;
+            ctx.lineCap = "round";
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + length * progress, y);
+            ctx.stroke();
+            if (progress > 0.95) {
+                ctx.beginPath();
+                ctx.moveTo(x + length - 16, y - 15);
+                ctx.lineTo(x + length, y);
+                ctx.lineTo(x + length - 16, y + 15);
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        function background(theme, time) {
+            ctx.fillStyle = theme === "dark" ? color.navy : theme === "coral" ? color.coral : color.paper;
+            ctx.fillRect(0, 0, W, H);
+            if (theme === "paper") {
+                ctx.save();
+                ctx.globalAlpha = 0.28;
+                const drift = Math.sin(time * 0.25) * 24;
+                ctx.drawImage(assets.background, -180 + drift, 240, 1450, 1450);
+                ctx.fillStyle = "rgba(250,248,243,.46)";
+                ctx.fillRect(0, 0, W, H);
+                ctx.restore();
+            } else if (theme === "dark") {
+                const gradient = ctx.createRadialGradient(920, 880, 10, 820, 980, 1150);
+                gradient.addColorStop(0, "rgba(231,100,80,.17)");
+                gradient.addColorStop(1, "rgba(231,100,80,0)");
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, W, H);
+            }
+            ctx.save();
+            ctx.strokeStyle = theme === "dark" ? "rgba(250,248,243,.07)" : "rgba(9,22,51,.06)";
+            ctx.lineWidth = 1;
+            for (const radius of [540, 770, 1000]) {
+                ctx.beginPath();
+                ctx.arc(920, 960, radius + Math.sin(time * 0.35) * 10, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        function chrome(scene, time) {
+            const dark = scene.theme === "dark";
+            const ink = dark ? color.paper : color.navy;
+            if (scene.theme === "coral") {
+                text("BIELIK MAUI", 86, 150, 35, ink);
+            } else {
+                ctx.drawImage(assets.logo, 84, 98, 296, 296 * assets.logo.height / assets.logo.width);
+            }
+            body(config.platform === "ios" ? "NATYWNE iOS" : "NATYWNY ANDROID",
+                976, 140, 26, dark ? color.muted : color.slate, { align: "right" });
+            ctx.fillStyle = dark ? "rgba(250,248,243,.14)" : "rgba(9,22,51,.13)";
+            ctx.fillRect(86, 1810, 908, 3);
+            ctx.fillStyle = scene.theme === "coral" ? color.navy : color.coral;
+            ctx.fillRect(86, 1810, 908 * clamp(time / config.duration), 3);
+            body("Bielik na Macu. Natywny klient na telefonie.",
+                86, 1773, 27, dark ? color.muted : color.slate);
+        }
+
+        function nativePanel(source, x, y, width, height, options = {}) {
+            if (!source || !source.complete || !source.naturalWidth) {
+                throw new Error("A native footage panel is missing its decoded source frame.");
+            }
+            const { crop = [0, 0, 1, 1], rotation = 0, radius = 32, bezel = false } = options;
+            ctx.save();
+            ctx.translate(x + width / 2, y + height / 2);
+            ctx.rotate(rotation * Math.PI / 180);
+            ctx.shadowColor = "rgba(0,0,0,.22)";
+            ctx.shadowBlur = 52;
+            ctx.shadowOffsetY = 32;
+            rounded(-width / 2 - 8, -height / 2 - 8, width + 16, height + 16, radius + 8);
+            ctx.fillStyle = bezel ? "#10141D" : "#FFFFFF";
+            ctx.fill();
+            ctx.shadowColor = "transparent";
+            rounded(-width / 2, -height / 2, width, height, radius);
+            ctx.clip();
+            ctx.drawImage(
+                source,
+                crop[0] * source.naturalWidth, crop[1] * source.naturalHeight,
+                crop[2] * source.naturalWidth, crop[3] * source.naturalHeight,
+                -width / 2, -height / 2, width, height,
+            );
+            ctx.restore();
+            nativeDraws += 1;
+        }
+
+        function phone(source, x, y, width, rotation = 0) {
+            nativePanel(source, x, y, width, width * source.naturalHeight / source.naturalWidth, {
+                rotation, radius: config.platform === "ios" ? 48 : 32, bezel: true,
+            });
+        }
+
+        function cropped(source, x, y, width, crop, rotation = 0) {
+            const height = width * source.naturalHeight * crop[3] / (source.naturalWidth * crop[2]);
+            nativePanel(source, x, y, width, height, { crop, rotation });
+            return height;
+        }
+
+        function monitor(x, y, t) {
+            const p = arrival(t, 0.4);
+            ctx.save();
+            ctx.globalAlpha *= p;
+            ctx.translate(x, y + (1 - p) * 40);
+            rounded(0, 0, 336, 232, 20);
+            ctx.fillStyle = color.navy;
+            ctx.fill();
+            rounded(13, 13, 310, 195, 10);
+            ctx.fillStyle = color.paper;
+            ctx.fill();
+            ctx.drawImage(assets.logo, 49, 78, 235, 235 * assets.logo.height / assets.logo.width);
+            ctx.fillStyle = color.navy;
+            ctx.fillRect(143, 230, 50, 46);
+            rounded(100, 270, 136, 12, 6);
+            ctx.fill();
+            body("Ollama + Bielik", 168, 326, 32, color.navy, { align: "center" });
+            ctx.restore();
+        }
+
+        function sceneContent(scene, t, source) {
+            const p = smooth(t / scene.duration);
+            switch (scene.name) {
+                case "hook": {
+                    line("Polska AI.", 86, 376, 112, color.navy, t);
+                    line("Twój Bielik.", 86, 510, 112, color.coral, t, 0.14);
+                    const a = arrival(t, 0.2, 0.85);
+                    ctx.save();
+                    ctx.globalAlpha = a;
+                    ctx.translate(98 + (1 - a) * -90, 646 + Math.sin(t * 1.2) * 12);
+                    ctx.drawImage(assets.mascot, 0, 0, 434, 458);
+                    ctx.restore();
+                    phone(footage.hero, lerp(1150, 634, arrival(t, 0.3, 0.8)),
+                        818 - p * 44, 396, 8 - p * 3);
+                    body("Model na Macu.", 86, 1220, 44, color.navy, { opacity: arrival(t, 0.65) });
+                    body("Rozmowa na telefonie.", 86, 1280, 44, color.navy, { opacity: arrival(t, 0.8) });
+                    pill(".NET 11  /  MAUI  /  MEAI", 86, 1450, 516);
+                    arrow(86, 1610, 200, color.coral, arrival(t, 0.9));
+                    break;
+                }
+                case "discover":
+                    line("Natywnie.", 86, 308, 108, color.paper, t);
+                    line("Po polsku.", 86, 430, 108, color.coral, t, 0.13);
+                    phone(source, 235 + Math.sin(t * 0.65) * 20,
+                        500 + (1 - arrival(t, 0.15)) * 170 - p * 26, 550, -3.5 + p * 3);
+                    break;
+                case "ideas":
+                    line("Wyjaśniaj.", 86, 320, 91, color.navy, t);
+                    line("Twórz.", 86, 426, 91, color.coral, t, 0.16);
+                    line("Koduj.", 86, 532, 91, color.navy, t, 0.32);
+                    cropped(source, 112 + p * 12, 658 + (1 - arrival(t, 0.15)) * 130,
+                        844, [0.05, 0.40, 0.90, 0.43], -2.4 + p * 3);
+                    body("Jeden pomysł. Wiele możliwości.", 86, 1650, 37, color.navy);
+                    break;
+                case "model":
+                    line("Jeden model.", 86, 305, 100, color.paper, t);
+                    line("Bez zamienników.", 86, 390, 51, color.muted, t, 0.12);
+                    ctx.save();
+                    ctx.globalAlpha = 0.20 * arrival(t, 0.2);
+                    ctx.drawImage(assets.network, 498, 480, 500, 474);
+                    ctx.restore();
+                    text("11B", 86, 827, 286, color.coral, { opacity: arrival(t, 0.1) });
+                    body("Bielik 2.6  /  Q4_K_M", 92, 918, 43, color.paper);
+                    cropped(source, 103, 1030 + (1 - arrival(t, 0.15)) * 100,
+                        850, [0.04, 0.19, 0.92, 0.34], -1.3 + p * 1.6);
+                    break;
+                case "connection": {
+                    line("Na Twoim", 86, 305, 106, color.navy, t);
+                    line("Macu.", 86, 428, 106, color.navy, t, 0.12);
+                    monitor(107, 570, t);
+                    phone(footage.hero, 686, 505 + (1 - arrival(t, 0.45)) * 75, 240, 3 - p * 2);
+                    arrow(479, 706, 152, color.navy, arrival(t, 0.65));
+                    ctx.fillStyle = color.paper;
+                    ctx.beginPath();
+                    ctx.arc(481 + (t % 1) * 148, 706, 9, 0, Math.PI * 2);
+                    ctx.fill();
+                    cropped(source, 119, 1130 + (1 - arrival(t, 0.2)) * 100,
+                        834, [0.05, config.platform === "ios" ? 0.055 : 0.435, 0.90, 0.23]);
+                    body("Bez chmury AI.", 86, 1710, 50, color.navy);
+                    break;
+                }
+                case "compose":
+                    line("Zapytaj.", 86, 308, 105, color.navy, t);
+                    line("Po polsku.", 86, 430, 105, color.coral, t, 0.12);
+                    phone(source, 246 - p * 16, 486 + (1 - arrival(t, 0.12)) * 120,
+                        546 + p * 10, 2.4 - p * 3);
+                    break;
+                case "streaming":
+                    line("Odpowiedź.", 86, 305, 100, color.paper, t);
+                    line("Na żywo.", 86, 423, 100, color.coral, t, 0.12);
+                    pill("MEAI  /  IChatClient", 86, 472, 391, false);
+                    cropped(source, 101 - p * 8, 596 - p * 14, 876 + p * 16,
+                        [0.045, 0.055, 0.91, 0.515], 1 - p);
+                    body("Rzeczywiste nagranie · tempo 1×", 86, 1730, 30, color.muted);
+                    break;
+                case "answer":
+                    line("To jest Bielik.", 86, 308, 96, color.navy, t);
+                    line("Nie atrapa.", 86, 422, 96, color.coral, t, 0.12);
+                    text("“", 79, 672, 242, color.coral, { opacity: arrival(t, 0.15) });
+                    cropped(source, 110 - p * 9, 681 + (1 - arrival(t, 0.2)) * 82,
+                        868 + p * 17, [0.045, 0.312, 0.91, 0.25], -1.5 + p * 1.8);
+                    body("Prawdziwa odpowiedź.", 86, 1440, 52, color.navy);
+                    body("Ten sam lokalny model.", 86, 1510, 40, color.slate);
+                    break;
+                case "copy":
+                    line("Skopiuj.", 86, 329, 116, color.navy, t);
+                    line("Działaj.", 86, 469, 116, color.navy, t, 0.13);
+                    cropped(source, 110, 819 - p * 35, 862,
+                        [0.045, 0.705, 0.91, 0.26], -2 + p * 3);
+                    body("Twoja odpowiedź. Twój następny krok.", 86, 1575, 38, color.navy);
+                    arrow(86, 1680, 196, color.navy, arrival(t, 0.6));
+                    break;
+                case "outro": {
+                    line("Bielik.", 86, 304, 114, color.navy, t);
+                    line("Twój ruch.", 86, 438, 114, color.coral, t, 0.12);
+                    const a = arrival(t, 0.17, 0.8);
+                    phone(footage.iosHero, 132 + (1 - a) * -200, 611 - p * 16, 350, -5 + p * 2);
+                    phone(footage.androidHero, 590 + (1 - a) * 200, 653 - p * 22, 350, 5 - p * 2);
+                    pill("iOS", 219, 1490, 171);
+                    pill("Android", 674, 1490, 194);
+                    body(".NET 11 + MAUI + MEAI", 86, 1630, 37, color.navy);
+                    text("kubaflo/bielik-maui", 86, 1708, 53, color.navy);
+                    break;
+                }
+                default:
+                    throw new Error(`Unsupported scene: ${scene.name}`);
+            }
+        }
+
+        function drawScene(scene, localTime, source, absoluteTime) {
+            background(scene.theme, absoluteTime);
+            sceneContent(scene, localTime, source);
+            chrome(scene, absoluteTime);
+        }
+
+        async function prepare(settings) {
+            if (!settings.scenes.length || settings.duration <= 0) {
+                throw new Error("A positive, populated storyboard is required.");
+            }
+            config = settings;
+            await Promise.all([
+                document.fonts.load("600 100px Geologica"),
+                document.fonts.load("400 40px SourceSans"),
+                document.fonts.load("600 40px SourceSans"),
+            ]);
+            await document.fonts.ready;
+            for (const [name, path] of Object.entries({
+                logo: "official_bielik_logo.png",
+                background: "official_bielik_background.png",
+                mascot: "official_bielik_mascot.png",
+                network: "official_bielik_network.png",
+            })) {
+                assets[name] = await image(`../../Bielik/Resources/Images/${path}`);
+            }
+            for (const [name, value] of Object.entries(settings.stills)) {
+                footage[name] = await image(value);
+            }
+            return { width: W, height: H, fontsReady: document.fonts.status === "loaded" };
+        }
+
+        async function render(time, currentFrame, previousFrame = null) {
+            if (!config || !Number.isFinite(time) || time < 0 || time >= config.duration) {
+                throw new Error(`Invalid composition time: ${time}`);
+            }
+            const index = config.scenes.findIndex(scene => time < scene.start + scene.duration - 0.000001);
+            if (index < 0) {
+                throw new Error("The requested frame falls outside the storyboard.");
+            }
+            const scene = config.scenes[index];
+            const localTime = Math.max(0, time - scene.start);
+            if (scene.source_start !== null && !currentFrame) {
+                throw new Error(`The ${scene.name} scene requires its actual native frame.`);
+            }
+            const source = currentFrame ? await image(currentFrame) : footage.hero;
+            textBounds = [];
+            nativeDraws = 0;
+            if (index > 0 && localTime < 0.35) {
+                const previous = config.scenes[index - 1];
+                const previousSource = previousFrame ? await image(previousFrame) : footage.hero;
+                drawScene(previous, previous.duration - 1 / config.fps, previousSource, scene.start);
+                const transition = smooth(localTime / 0.35);
+                ctx.save();
+                ctx.beginPath();
+                ctx.rect(W * (1 - transition), 0, W * transition, H);
+                ctx.clip();
+                drawScene(scene, localTime, source, time);
+                ctx.restore();
+            } else {
+                drawScene(scene, localTime, source, time);
+            }
+            const overflow = textBounds.filter(item => (
+                item.left < 50 || item.right > 1020 || item.top < 55 || item.bottom > 1795
+            ));
+            if (overflow.length || !nativeDraws) {
+                throw new Error(`Composition failed its layout checks: ${JSON.stringify({ overflow, nativeDraws })}`);
+            }
+            return { jpeg: canvas.toDataURL("image/jpeg", 0.97).split(",")[1], nativeDraws, scene: scene.name };
+        }
+
+        window.bielikReel = { prepare, render };
+    </script>
+</body>
+</html>

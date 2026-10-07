@@ -132,65 +132,131 @@
     }
   ],
   "error": null,
+  "rendered_at": "2026-10-07T11:27:56.352683+00:00",
   "published_recording": "android-demo.mp4",
-  "published_recording_sha256": "b012168501fa097859f54142b9912e8c34373db07dee0443d77d03f5e2d8a98d",
-  "published_duration_seconds": 49.541667,
-  "published_bytes": 3748548,
+  "published_recording_sha256": "355f45bb704e559ae7362b9be452887b5f6e8f6c5d2957dda2e93280503aebac",
+  "published_duration_seconds": 30.5,
+  "published_bytes": 11738380,
   "resolution": [
     1080,
     1920
   ],
-  "frames_per_second": 24,
-  "presentation": "2.5s title, unchanged real-time native footage, 2s closing card",
+  "frames_per_second": 60,
+  "presentation": "Ten beat-paced HTML/canvas scenes, native UI close-ups, eased camera motion and editorial wipes.",
+  "source_recording_reused": true,
+  "raw_recording": "media/demos/android-raw.mp4",
   "native_footage_speed": 1,
-  "audio": "none",
-  "full_decode_verified": true,
-  "poster": "android-demo.jpg",
-  "published_chapters": [
+  "native_footage_edited": true,
+  "source_to_output_timeline": [
     {
-      "name": "discover",
-      "label": "Discover Bielik",
-      "start": 3.532
+      "name": "hook",
+      "start": 0,
+      "duration": 2.5,
+      "theme": "paper",
+      "source_start": null,
+      "playback_rate": null
     },
     {
-      "name": "inspiration",
-      "label": "Ideas to get you started",
-      "start": 7.365
+      "name": "discover",
+      "start": 2.5,
+      "duration": 3.5,
+      "theme": "dark",
+      "source_start": 1.3820000000000001,
+      "playback_rate": 1
+    },
+    {
+      "name": "ideas",
+      "start": 6.0,
+      "duration": 3.0,
+      "theme": "paper",
+      "source_start": 5.665,
+      "playback_rate": 1
     },
     {
       "name": "model",
-      "label": "One exact local model",
-      "start": 12.1
+      "start": 9.0,
+      "duration": 2.5,
+      "theme": "dark",
+      "source_start": 12.6,
+      "playback_rate": 1
     },
     {
       "name": "connection",
-      "label": "Connect to your Mac",
-      "start": 21.748
+      "start": 11.5,
+      "duration": 3.0,
+      "theme": "coral",
+      "source_start": 19.898,
+      "playback_rate": 1
     },
     {
       "name": "compose",
-      "label": "Ask Bielik in Polish",
-      "start": 25.953
+      "start": 14.5,
+      "duration": 2.5,
+      "theme": "paper",
+      "source_start": 25.481,
+      "playback_rate": 1
     },
     {
       "name": "streaming",
-      "label": "Real-time MEAI streaming",
-      "start": 30.681
+      "start": 17.0,
+      "duration": 5.0,
+      "theme": "dark",
+      "source_start": 28.181,
+      "playback_rate": 1
     },
     {
-      "name": "completed",
-      "label": "A real Bielik response",
-      "start": 34.697
+      "name": "answer",
+      "start": 22.0,
+      "duration": 3.0,
+      "theme": "paper",
+      "source_start": 32.647000000000006,
+      "playback_rate": 1
     },
     {
       "name": "copy",
-      "label": "Copy your reply",
-      "start": 41.352
+      "start": 25.0,
+      "duration": 2.0,
+      "theme": "coral",
+      "source_start": 38.2,
+      "playback_rate": 1
     },
     {
-      "name": "finish",
-      "label": "Native iOS and Android",
-      "start": 43.38
+      "name": "outro",
+      "start": 27.0,
+      "duration": 3.5,
+      "theme": "paper",
+      "source_start": null,
+      "playback_rate": null
     }
-  ]
+  ],
+  "edit_map": "scripts/reels/edit-map.json",
+  "edit_map_sha256": "0f2d3568c319d4d70584ef0805fdc72ff7363bd8ba66cc10be1017adc2c6779c",
+  "timing_basis": "Cuts are matched to visible events in the native movie, not recorder-start wall-clock chapter timestamps.",
+  "original_capture_report_sha256": "b0882055f104bdf6700e98a59c0a954369113118f6f1649eb380ebcfd9d5f904",
+  "native_stills": {
+    "ios": {
+      "raw_recording": "media/demos/ios-raw.mp4",
+      "native_recording_sha256": "f21beb2992da4a7dfd7a971d1e1e8b8db7df6ba49bf4290eefd092dc08af6e77",
+      "source_time_seconds": 1.556
+    },
+    "android": {
+      "raw_recording": "media/demos/android-raw.mp4",
+      "native_recording_sha256": "2e9951197c39c3a5a66a93ab588e6ec9ae677668ae63c8f2ec8d58b46f3f3215",
+      "source_time_seconds": 1.582
+    }
+  },
+  "audio": "Original procedural stereo instrumental and transition sounds; 120 BPM, AAC, -16 LUFS target.",
+  "audio_source": "scripts/render-reels.py soundtrack(); no borrowed recording, speech or third-party music.",
+  "composition": "scripts/reels/composition.html",
+  "composition_sha256": "ab50e91f6129e07b69886dcb79be0e218e4761efee2adb82042e181577ebdc28",
+  "renderer": "Playwright WebKit; decoded native image frames, no browser video layer or desktop automation.",
+  "renderer_sha256": "a66361fdf2f9d10214f45a9bc2db85b6536ca861fcc3eab874cd0c2cc29a713d",
+  "style_reference": "https://lnkd.in/p/e4F-NJAc",
+  "full_decode_verified": true,
+  "all_frames_compared_to_render": {
+    "frames_compared": 1830,
+    "worst_mean_error": 4.140300925925926,
+    "worst_tile_error": 12.833333333333334
+  },
+  "poster": "android-demo.jpg"
 }

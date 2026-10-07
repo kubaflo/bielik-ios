@@ -1,0 +1,29 @@
+{
+  "timing_basis": "Cuts are matched to visible events in the native movie, not recorder-start wall-clock chapter timestamps.",
+  "ios": {
+    "native_recording_sha256": "f21beb2992da4a7dfd7a971d1e1e8b8db7df6ba49bf4290eefd092dc08af6e77",
+    "shots": {
+      "compose": {
+        "source_start": 21.9
+      },
+      "streaming": {
+        "source_start": 26.25,
+        "duration": 5.0
+      },
+      "answer": {
+        "source_start": 31.2
+      },
+      "copy": {
+        "source_start": 37.9
+      }
+    }
+  },
+  "android": {
+    "native_recording_sha256": "2e9951197c39c3a5a66a93ab588e6ec9ae677668ae63c8f2ec8d58b46f3f3215",
+    "shots": {
+      "copy": {
+        "source_start": 38.2
+      }
+    }
+  }
+}
