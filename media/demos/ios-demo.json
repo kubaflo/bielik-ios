@@ -132,17 +132,46 @@
     }
   ],
   "error": null,
-  "rendered_at": "2026-10-07T11:27:12.894455+00:00",
+  "rendered_at": "2026-10-07T18:12:40.762779+00:00",
   "published_recording": "ios-demo.mp4",
-  "published_recording_sha256": "65514dcffe42c2c316cbdd6b13737856910ac784215781369852c5a25970e656",
-  "published_duration_seconds": 30.5,
-  "published_bytes": 12817739,
+  "published_recording_sha256": "48229f89b1e22ac6999dc2db373108b8535b0a664a98c78bc62212a09fce33ac",
+  "published_duration_seconds": 35.0,
+  "published_bytes": 13675552,
   "resolution": [
     1080,
     1920
   ],
   "frames_per_second": 60,
-  "presentation": "Ten beat-paced HTML/canvas scenes, native UI close-ups, eased camera motion and editorial wipes.",
+  "presentation": "Bielik × MEAI joint campaign: ten English developer-facing scenes, verified C# source, native streaming and editorial camera motion.",
+  "campaign": {
+    "title": "Bielik × MEAI",
+    "subjects": [
+      "Bielik",
+      "Microsoft.Extensions.AI"
+    ],
+    "language": "en",
+    "tagline": "Polish AI. Native .NET.",
+    "bielik_url": "https://bielik.ai/",
+    "meai_url": "https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai",
+    "positioning": "Bielik is the language model; MEAI supplies the common .NET client abstraction.",
+    "source_excerpt": {
+      "source": "Bielik/ViewModels/ChatViewModel.cs",
+      "source_sha256": "00281fb0adc588c44f254060b8703c2863637b8aeb333283d0b174c5dd8f2575",
+      "lines": [
+        "await foreach (var update in",
+        "    _chatClient.GetStreamingResponseAsync(",
+        "        conversation,",
+        "        cancellationToken: cancellation.Token))",
+        "{",
+        "    text.Append(update.Text);",
+        "    answer.Text = text.ToString();",
+        "}"
+      ],
+      "display_edits": "Line wrapping; remaining completion and metric handling omitted for legibility.",
+      "omitted_loop_body": "Finish-reason and generation-metric handling follow the displayed statements."
+    },
+    "unofficial_integration_sample": true
+  },
   "source_recording_reused": true,
   "raw_recording": "media/demos/ios-raw.mp4",
   "native_footage_speed": 1,
@@ -151,38 +180,46 @@
     {
       "name": "hook",
       "start": 0,
-      "duration": 2.5,
+      "duration": 3.0,
       "theme": "paper",
       "source_start": null,
       "playback_rate": null
     },
     {
       "name": "discover",
-      "start": 2.5,
+      "start": 3.0,
       "duration": 3.5,
       "theme": "dark",
       "source_start": 1.3559999999999999,
       "playback_rate": 1
     },
     {
-      "name": "ideas",
-      "start": 6.0,
-      "duration": 3.0,
-      "theme": "paper",
-      "source_start": 5.644,
-      "playback_rate": 1
-    },
-    {
       "name": "model",
-      "start": 9.0,
-      "duration": 2.5,
+      "start": 6.5,
+      "duration": 3.0,
       "theme": "dark",
       "source_start": 9.887,
       "playback_rate": 1
     },
     {
+      "name": "meai",
+      "start": 9.5,
+      "duration": 4.0,
+      "theme": "dark",
+      "source_start": null,
+      "playback_rate": null
+    },
+    {
+      "name": "integration",
+      "start": 13.5,
+      "duration": 4.5,
+      "theme": "dark",
+      "source_start": null,
+      "playback_rate": null
+    },
+    {
       "name": "connection",
-      "start": 11.5,
+      "start": 18.0,
       "duration": 3.0,
       "theme": "coral",
       "source_start": 17.637999999999998,
@@ -190,7 +227,7 @@
     },
     {
       "name": "compose",
-      "start": 14.5,
+      "start": 21.0,
       "duration": 2.5,
       "theme": "paper",
       "source_start": 21.9,
@@ -198,7 +235,7 @@
     },
     {
       "name": "streaming",
-      "start": 17.0,
+      "start": 23.5,
       "duration": 5.0,
       "theme": "dark",
       "source_start": 26.25,
@@ -206,31 +243,23 @@
     },
     {
       "name": "answer",
-      "start": 22.0,
-      "duration": 3.0,
+      "start": 28.5,
+      "duration": 2.5,
       "theme": "paper",
       "source_start": 31.2,
       "playback_rate": 1
     },
     {
-      "name": "copy",
-      "start": 25.0,
-      "duration": 2.0,
-      "theme": "coral",
-      "source_start": 37.9,
-      "playback_rate": 1
-    },
-    {
       "name": "outro",
-      "start": 27.0,
-      "duration": 3.5,
+      "start": 31.0,
+      "duration": 4.0,
       "theme": "paper",
       "source_start": null,
       "playback_rate": null
     }
   ],
   "edit_map": "scripts/reels/edit-map.json",
-  "edit_map_sha256": "0f2d3568c319d4d70584ef0805fdc72ff7363bd8ba66cc10be1017adc2c6779c",
+  "edit_map_sha256": "d18fea33e856d16f6b08e1364979ce50aa7889d1e81aa86ace5ce7626b2fab7b",
   "timing_basis": "Cuts are matched to visible events in the native movie, not recorder-start wall-clock chapter timestamps.",
   "original_capture_report_sha256": "d7bf1b0f8d8cd18f11aa78ae4fd901e9a6833adf5ad39ae3e25f51024b24c2c0",
   "native_stills": {
@@ -246,17 +275,18 @@
     }
   },
   "audio": "Original procedural stereo instrumental and transition sounds; 120 BPM, AAC, -16 LUFS target.",
+  "audio_normalization_true_peak_target_db": -3,
   "audio_source": "scripts/render-reels.py soundtrack(); no borrowed recording, speech or third-party music.",
   "composition": "scripts/reels/composition.html",
-  "composition_sha256": "ab50e91f6129e07b69886dcb79be0e218e4761efee2adb82042e181577ebdc28",
+  "composition_sha256": "43d0d8b5585e86d9c77396d4011bbd4248467d0a945b8b0896b098752919633b",
   "renderer": "Playwright WebKit; decoded native image frames, no browser video layer or desktop automation.",
-  "renderer_sha256": "a66361fdf2f9d10214f45a9bc2db85b6536ca861fcc3eab874cd0c2cc29a713d",
+  "renderer_sha256": "910771b5c7c908c834483d4a38f7850a9a0199129a2db7ab2e849bff5a0953e6",
   "style_reference": "https://lnkd.in/p/e4F-NJAc",
   "full_decode_verified": true,
   "all_frames_compared_to_render": {
-    "frames_compared": 1830,
-    "worst_mean_error": 4.141805555555556,
-    "worst_tile_error": 12.873333333333333
+    "frames_compared": 2100,
+    "worst_mean_error": 4.187083333333334,
+    "worst_tile_error": 12.343333333333334
   },
   "poster": "ios-demo.jpg"
 }

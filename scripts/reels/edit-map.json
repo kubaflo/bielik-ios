@@ -12,18 +12,11 @@
       },
       "answer": {
         "source_start": 31.2
-      },
-      "copy": {
-        "source_start": 37.9
       }
     }
   },
   "android": {
     "native_recording_sha256": "2e9951197c39c3a5a66a93ab588e6ec9ae677668ae63c8f2ec8d58b46f3f3215",
-    "shots": {
-      "copy": {
-        "source_start": 38.2
-      }
-    }
+    "shots": {}
   }
 }

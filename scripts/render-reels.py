@@ -8,6 +8,7 @@ import hashlib
 import io
 import json
 import math
+import re
 import shutil
 import subprocess
 import tempfile
@@ -83,22 +84,54 @@ def read_capture(recording, report_path, platform):
     return report
 
 
+def source_excerpt():
+    path = ROOT / "Bielik/ViewModels/ChatViewModel.cs"
+    source = path.read_text(encoding="utf-8")
+    signature = (
+        "await foreach (var update in "
+        "_chatClient.GetStreamingResponseAsync(conversation, cancellationToken: cancellation.Token))"
+    )
+    lines = [
+        "await foreach (var update in",
+        "    _chatClient.GetStreamingResponseAsync(",
+        "        conversation,",
+        "        cancellationToken: cancellation.Token))",
+        "{",
+        "    text.Append(update.Text);",
+        "    answer.Text = text.ToString();",
+        "}",
+    ]
+    normalized = re.sub(r"\s+", "", source)
+    expected = re.sub(r"\s+", "", signature + "{text.Append(update.Text);answer.Text = text.ToString();")
+    if expected not in normalized or "private readonly IChatClient _chatClient;" not in source:
+        raise ValueError("The actual view model no longer matches the promoted MEAI streaming excerpt.")
+    if re.sub(r"\s+", "", "".join(lines[:4])) != re.sub(r"\s+", "", signature):
+        raise ValueError("The displayed streaming call differs from the actual implementation.")
+    return {
+        "source": resource_name(path),
+        "source_sha256": digest(path),
+        "lines": lines,
+        "display_edits": "Line wrapping; remaining completion and metric handling omitted for legibility.",
+        "omitted_loop_body": "Finish-reason and generation-metric handling follow the displayed statements.",
+    }
+
+
 def storyboard(report, edit):
     chapters = {item["name"]: item["start"] for item in report["chapters"]}
     generation = math.ceil((chapters["completed"] - chapters["streaming"] + 0.6) * 2) / 2
     if not 0.5 <= generation <= 15:
         raise ValueError("The recorded generation is outside the supported reel timing.")
     scenes = [
-        ("hook", 2.5, "paper", None),
+        ("hook", 3.0, "paper", None),
         ("discover", 3.5, "dark", chapters["discover"] + 0.35),
-        ("ideas", 3.0, "paper", chapters["inspiration"] + 0.80),
-        ("model", 2.5, "dark", chapters["model"] + (1.0 if report["platform"] == "ios" else 3.0)),
+        ("model", 3.0, "dark", chapters["model"] + (1.0 if report["platform"] == "ios" else 3.0)),
+        ("meai", 4.0, "dark", None),
+        ("integration", 4.5, "dark", None),
         ("connection", 3.0, "coral", chapters["connection"] + 0.65),
         ("compose", 2.5, "paper", chapters["streaming"] - 2.70),
         ("streaming", generation, "dark", chapters["streaming"]),
-        ("answer", 3.0, "paper", chapters["completed"] + 0.45),
-        ("copy", 2.0, "coral", chapters["copy"] - 0.15),
-        ("outro", 3.5, "paper", None),
+        ("answer", 2.5, "paper", chapters["completed"] + 0.45),
+        ("outro", 4.0, "paper", None),
     ]
     if edit["native_recording_sha256"] != report["native_recording_sha256"]:
         raise ValueError("The edit map was calibrated for a different native recording.")
@@ -346,6 +379,7 @@ def render_platform(page, platform, recordings, reports, edits, args, work):
             for name, path in recordings.items()}
     settings = {
         "platform": platform, "fps": FPS, "duration": duration, "scenes": scenes,
+        "codeExcerpt": source_excerpt(),
         "stills": {
             "hero": image_uri(hero[platform]),
             "iosHero": image_uri(hero["ios"]),
@@ -431,7 +465,7 @@ def render_platform(page, platform, recordings, reports, edits, args, work):
         run([
             "ffmpeg", "-hide_banner", "-v", "error", "-i", str(visual), "-i", str(audio),
             "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
-            "-af", "loudnorm=I=-16:TP=-2:LRA=7", "-ar", "48000", "-t", str(duration),
+            "-af", "loudnorm=I=-16:TP=-3:LRA=7", "-ar", "48000", "-t", str(duration),
             "-movflags", "+faststart", str(final),
         ], stderr=log)
         comparison = verify_frames(final, fingerprints, log)
@@ -458,7 +492,18 @@ def render_platform(page, platform, recordings, reports, edits, args, work):
         "published_bytes": final.stat().st_size,
         "resolution": [WIDTH, HEIGHT],
         "frames_per_second": FPS,
-        "presentation": "Ten beat-paced HTML/canvas scenes, native UI close-ups, eased camera motion and editorial wipes.",
+        "presentation": "Bielik × MEAI joint campaign: ten English developer-facing scenes, verified C# source, native streaming and editorial camera motion.",
+        "campaign": {
+            "title": "Bielik × MEAI",
+            "subjects": ["Bielik", "Microsoft.Extensions.AI"],
+            "language": "en",
+            "tagline": "Polish AI. Native .NET.",
+            "bielik_url": "https://bielik.ai/",
+            "meai_url": "https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai",
+            "positioning": "Bielik is the language model; MEAI supplies the common .NET client abstraction.",
+            "source_excerpt": settings["codeExcerpt"],
+            "unofficial_integration_sample": True,
+        },
         "source_recording_reused": True,
         "raw_recording": resource_name(source),
         "native_footage_speed": 1,
@@ -477,6 +522,7 @@ def render_platform(page, platform, recordings, reports, edits, args, work):
             for name in recordings
         },
         "audio": "Original procedural stereo instrumental and transition sounds; 120 BPM, AAC, -16 LUFS target.",
+        "audio_normalization_true_peak_target_db": -3,
         "audio_source": "scripts/render-reels.py soundtrack(); no borrowed recording, speech or third-party music.",
         "composition": "scripts/reels/composition.html",
         "composition_sha256": digest(ROOT / "scripts/reels/composition.html"),

@@ -5,7 +5,10 @@
 <h1 align="center">Bielik MAUI</h1>
 
 <p align="center">
-  A native Polish-language companion for Bielik, inspired by <a href="https://bielik.ai/">bielik.ai</a>.
+  <strong>Bielik speaks Polish. MEAI speaks .NET.</strong>
+  <br />
+  A native companion connecting <a href="https://bielik.ai/">Bielik</a> with
+  <a href="https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai">Microsoft.Extensions.AI</a>.
   <br />
   <strong>.NET 11 &middot; iOS &amp; Android &middot; MEAI &middot; Local Bielik</strong>
 </p>
@@ -18,7 +21,7 @@
 
 ## See it in action
 
-Two **30-second, 60 fps reels**: animated typography, native UI close-ups, and an original soundtrack. The chat footage shows a real local Bielik response, not a mocked conversation.
+Two **35-second, 60 fps Bielik × MEAI reels**: Polish open-weight AI meets a common .NET chat API. See the actual C# integration, native UI and a real streamed Bielik reply, with kinetic typography and an original soundtrack.
 
 <table>
   <tr>
@@ -28,12 +31,12 @@ Two **30-second, 60 fps reels**: animated typography, native UI close-ups, and a
   <tr>
     <td align="center">
       <a href="media/demos/ios-demo.mp4">
-        <img src="media/demos/ios-demo.jpg" alt="Bielik iOS reel: official eagle artwork and a real native iPhone screen" width="300" />
+        <img src="media/demos/ios-demo.jpg" alt="Bielik × MEAI: Polish AI, Microsoft.Extensions.AI and a real native iPhone screen" width="300" />
       </a>
     </td>
     <td align="center">
       <a href="media/demos/android-demo.mp4">
-        <img src="media/demos/android-demo.jpg" alt="Bielik Android reel: official eagle artwork and a real native Android screen" width="300" />
+        <img src="media/demos/android-demo.jpg" alt="Bielik × MEAI: Polish AI, Microsoft.Extensions.AI and a real native Android screen" width="300" />
       </a>
     </td>
   </tr>
@@ -48,6 +51,12 @@ Two **30-second, 60 fps reels**: animated typography, native UI close-ups, and a
     </td>
   </tr>
 </table>
+
+[Copy-ready LinkedIn and Reels captions](docs/promotion.md) introduce both projects and link to their official resources.
+
+## Why Bielik + MEAI?
+
+**Bielik** brings the Polish-language, open-weight model. **MEAI** brings `IChatClient`, typed streaming updates and a common .NET integration surface. This sample's `BielikChatClient` adapter connects the two; the same native MAUI chat view model runs on iOS and Android.
 
 ## What's inside
 
@@ -100,6 +109,6 @@ The SDK is a preview. Physical phones require additional setup; Release uses HTT
 
 ## About
 
-This is an **unofficial companion**, not a SpeakLeash product. Chat uses `Microsoft.Extensions.AI`; MAUI Essentials AI is used for capability diagnostics, not to replace Bielik. It currently has no native Android provider. [AI integration details](docs/development.md#meai-and-maui-essentials-ai).
+This is an **unofficial integration sample**, not a SpeakLeash or Microsoft product. Chat uses `Microsoft.Extensions.AI`; MAUI Essentials AI is used for capability diagnostics, not to replace Bielik. It currently has no native Android provider. [AI integration details](docs/development.md#meai-and-maui-essentials-ai).
 
 Application source is [MIT licensed](LICENSE). Official Bielik artwork and bundled fonts retain their original rights and licenses; see [credits and notices](Bielik/Resources/Raw/third_party_notices.txt). Model weights are downloaded separately under Apache-2.0.
