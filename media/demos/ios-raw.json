@@ -1,0 +1,135 @@
+{
+  "recorded_at": "2026-10-06T18:02:56.345930+00:00",
+  "platform": "ios",
+  "device": "9614804D-A8C5-4D6B-BD3C-850846E4B375",
+  "isolated_from_user_testing": true,
+  "app": {
+    "timestamp": "2026-10-06T18:02:07.2713890+00:00",
+    "agent": {
+      "name": "Microsoft.Maui.DevFlow.Agent",
+      "version": "0.1.0-preview.12.26421.1+78e85a5cb9c7a3efaaacf85d6176ce971f40b7d6",
+      "framework": ".NET MAUI",
+      "frameworkId": "maui",
+      "frameworkVersion": "11.0.0",
+      "uiFramework": "maui-controls",
+      "sessionId": "dwlsporkbielikbielikcsproj"
+    },
+    "device": {
+      "platform": "iOS",
+      "deviceType": "Virtual",
+      "idiom": "Phone",
+      "displayDensity": 3,
+      "windowCount": 1,
+      "windowWidth": 402,
+      "windowHeight": 874
+    },
+    "app": {
+      "name": "Bielik",
+      "packageId": "dev.bielik.companion",
+      "version": "1.0",
+      "build": "1",
+      "processId": 49550
+    },
+    "capabilities": {
+      "ui": true,
+      "layoutDiagnostics": false,
+      "screenshots": true,
+      "webview": false,
+      "network": true,
+      "logs": true,
+      "sensors": true,
+      "storage": true,
+      "profiler": false,
+      "jobs": true,
+      "theme": true,
+      "mutationLease": true
+    },
+    "running": true,
+    "route": "//settings",
+    "cdpReady": false,
+    "cdpWebViewCount": 0,
+    "profiler": {
+      "available": false,
+      "supportedInBuild": true,
+      "featureEnabled": false,
+      "platform": "iOS",
+      "managedMemorySupported": true,
+      "nativeMemorySupported": true,
+      "gcSupported": true,
+      "cpuPercentSupported": true,
+      "fpsSupported": true,
+      "frameTimingsEstimated": true,
+      "nativeFrameTimingsSupported": true,
+      "jankEventsSupported": true,
+      "uiThreadStallSupported": true,
+      "threadCountSupported": true
+    },
+    "profilerSession": null,
+    "extensions": {
+      "count": 0,
+      "hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    }
+  },
+  "source_base_commit": "be59f1ca5cc6dfb8e1a24a899cf02ec6ebc346df",
+  "model": "hf.co/speakleash/Bielik-11B-v2.6-Instruct-GGUF:Q4_K_M",
+  "model_digest_display": "Identyfikator wag: 7eb4bbe15c57",
+  "inference": "Ollama on the Mac CPU, not on the phone",
+  "cloud_fallback": false,
+  "xctest_used": false,
+  "warm_up_before_recording": true,
+  "prompt": "Wyjaśnij w dwóch krótkich zdaniach, do czego służy polski model językowy Bielik.",
+  "actual_reply": "Bielik to polski model językowy służący do generowania tekstu, odpowiadania na pytania i wspomagania różnych zadań w języku polskim. Umożliwia naturalną komunikację i przetwarzanie języka w sposób zrozumiały dla użytkowników.",
+  "completion_metrics": "BIELIK · 22,4 TOK/S",
+  "native_clipboard_verified": true,
+  "native_recording": "native-demo.mp4",
+  "native_recording_sha256": "f21beb2992da4a7dfd7a971d1e1e8b8db7df6ba49bf4290eefd092dc08af6e77",
+  "native_duration_seconds": 40.805,
+  "chapters": [
+    {
+      "name": "discover",
+      "label": "Discover Bielik",
+      "start": 1.006
+    },
+    {
+      "name": "inspiration",
+      "label": "Ideas to get you started",
+      "start": 4.844
+    },
+    {
+      "name": "model",
+      "label": "One exact local model",
+      "start": 8.887
+    },
+    {
+      "name": "connection",
+      "label": "Connect to your Mac",
+      "start": 16.988
+    },
+    {
+      "name": "compose",
+      "label": "Ask Bielik in Polish",
+      "start": 21.921
+    },
+    {
+      "name": "streaming",
+      "label": "Real-time MEAI streaming",
+      "start": 26.647
+    },
+    {
+      "name": "completed",
+      "label": "A real Bielik response",
+      "start": 31.724
+    },
+    {
+      "name": "copy",
+      "label": "Copy your reply",
+      "start": 38.53
+    },
+    {
+      "name": "finish",
+      "label": "Native iOS and Android",
+      "start": 40.568
+    }
+  ],
+  "error": null
+}
