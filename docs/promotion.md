@@ -6,23 +6,29 @@ Copy-ready drafts for promoting both projects. These captions have not been post
 
 ## LinkedIn
 
-Polish AI, a common .NET API, and two native mobile apps.
+[Download the ready-to-attach screenshot image](../media/linkedin/bielik-meai.png). It uses the original [iOS discovery screenshot](../media/android-meai/ios/screenshots/01-discover.png) and [Android chat screenshot](../media/android-meai/android/screenshots/07-real-chat.png), with unchanged app content, resized and framed for a 1200 x 1500 post image. The native captures are from a simulator and emulator; this is not a physical-device photograph.
 
-Bielik brings the Polish-language, open-weight model. Microsoft.Extensions.AI (MEAI) brings `IChatClient`: a shared .NET interface with typed streaming responses and cancellation.
+Copy-ready post:
 
-In this open-source .NET 11 MAUI sample, `BielikChatClient` connects the two. The same chat view model runs on iOS and Android. The reels show real source code and an actual streamed Polish answer, not a mocked conversation.
+```text
+Bielik speaks Polish. MEAI speaks .NET.
 
-The phone is the native client. Bielik 11B v2.6 runs locally through Ollama on a Mac, not on the phone. No alternate model or cloud fallback.
+I built an open-source .NET 11 MAUI app that brings the two together on iOS and Android.
 
-Build with both:
+Bielik brings the Polish-language, open-weight model. Microsoft.Extensions.AI (MEAI) brings IChatClient: a common .NET interface for chat.
 
-- Bielik: https://bielik.ai/
-- MEAI: https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai
-- Sample and videos: https://github.com/kubaflo/bielik-maui
+My BielikChatClient adapter connects them. The same chat view model handles streamed replies and cancellation on both platforms.
 
-Recorded on an iOS simulator and Android emulator; edited footage is not a speed benchmark.
+The phone is the native client. Bielik 11B v2.6 runs locally through Ollama on my Mac, not on the phone. No alternate model or cloud fallback.
 
-#Bielik #MEAI #dotnet #dotnetMAUI #OpenSource
+The screenshots show the actual app on an iOS simulator and Android emulator. The project uses the .NET 11 preview SDK.
+
+Code: https://github.com/kubaflo/bielik-maui
+Bielik: https://bielik.ai/
+MEAI: https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai
+
+#Bielik #MEAI #dotnetMAUI #dotnet #OpenSource
+```
 
 ## Instagram Reels / short caption
 
