@@ -52,7 +52,7 @@ Two **35-second, 60 fps Bielik × MEAI reels**: Polish open-weight AI meets a co
   </tr>
 </table>
 
-[Copy-ready LinkedIn and Reels captions](docs/promotion.md) introduce both projects and link to their official resources.
+[Copy-ready social captions](docs/promotion.md) and [raw app screenshots with 30-second Gemini prompts](media/gemini-reel/bielik-meai-gemini-kit.zip) are ready to use.
 
 ## Why Bielik + MEAI?
 

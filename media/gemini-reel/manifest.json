@@ -1,0 +1,140 @@
+{
+  "purpose": "Raw app screenshots and separate 30-second iOS/Android Gemini reel prompts.",
+  "target_duration_seconds": 30,
+  "target_aspect_ratio": "9:16",
+  "target_resolution": [
+    1080,
+    1920
+  ],
+  "inference_runtime": "Pinned Bielik 11B v2.6 Q4_K_M in Ollama on the Mac, not the phone.",
+  "meai": "Microsoft.Extensions.AI / IChatClient, not another model.",
+  "screenshots": [
+    {
+      "file": "screenshots/01-ios-discover.png",
+      "kind": "Unchanged native simulator/emulator screenshot; no overlays or edits.",
+      "platform": "ios",
+      "source": "media/android-meai/ios/screenshots/01-discover.png",
+      "capture_report": "media/android-meai/ios/ui-report.json",
+      "captured_at": "2026-10-05T23:55:52.353478+00:00",
+      "bytes": 1301592,
+      "sha256": "2c31e5b2db6bea013ed56a4f257bdabdd4766f9039c9db289fc85409e2e560c3",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "file": "screenshots/02-android-discover.png",
+      "kind": "Unchanged native simulator/emulator screenshot; no overlays or edits.",
+      "platform": "android",
+      "source": "media/android-meai/android/screenshots/01-discover.png",
+      "capture_report": "media/android-meai/android/ui-report.json",
+      "captured_at": "2026-10-06T00:24:20.800082+00:00",
+      "bytes": 871112,
+      "sha256": "d1d5f3462256afd6b7cedbea536ff8011965416d12ad27d2252cfec74cf790af",
+      "dimensions": [
+        1080,
+        2424
+      ]
+    },
+    {
+      "file": "screenshots/03-ios-model.png",
+      "kind": "Unchanged native simulator/emulator screenshot; no overlays or edits.",
+      "platform": "ios",
+      "source": "media/android-meai/ios/screenshots/04-model.png",
+      "capture_report": "media/android-meai/ios/ui-report.json",
+      "captured_at": "2026-10-05T23:55:52.353478+00:00",
+      "bytes": 380461,
+      "sha256": "e6e2a0634dc1576f35ae0a5926ba50bc3ac6212a8fbc650e4002ea6d116e99a9",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "file": "screenshots/04-android-model.png",
+      "kind": "Unchanged native simulator/emulator screenshot; no overlays or edits.",
+      "platform": "android",
+      "source": "media/android-meai/android/screenshots/04-model.png",
+      "capture_report": "media/android-meai/android/ui-report.json",
+      "captured_at": "2026-10-06T00:24:20.800082+00:00",
+      "bytes": 272905,
+      "sha256": "3dba47c99aef1fbd648b7fb9f966c654ad6deb8bb1aded72eabf4f5fd99ef100",
+      "dimensions": [
+        1080,
+        2424
+      ]
+    },
+    {
+      "file": "screenshots/05-ios-meai.png",
+      "kind": "Unchanged native simulator/emulator screenshot; no overlays or edits.",
+      "platform": "ios",
+      "source": "media/android-meai/ios/screenshots/05-ai-integration.png",
+      "capture_report": "media/android-meai/ios/ui-report.json",
+      "captured_at": "2026-10-05T23:55:52.353478+00:00",
+      "bytes": 354104,
+      "sha256": "dfcd9526a2b0e250c2ea6673ee8f2368bb94ac07a6e7bbfe60e98fd6fa784a1a",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "file": "screenshots/06-android-meai.png",
+      "kind": "Unchanged native simulator/emulator screenshot; no overlays or edits.",
+      "platform": "android",
+      "source": "media/android-meai/android/screenshots/05-ai-integration.png",
+      "capture_report": "media/android-meai/android/ui-report.json",
+      "captured_at": "2026-10-06T00:24:20.800082+00:00",
+      "bytes": 294958,
+      "sha256": "624dd7f778a02e4ab1facf7086c290d348ff397e15a3f9557c7e237dffebe067",
+      "dimensions": [
+        1080,
+        2424
+      ]
+    },
+    {
+      "file": "screenshots/07-ios-real-chat.png",
+      "kind": "Unchanged native simulator/emulator screenshot; no overlays or edits.",
+      "platform": "ios",
+      "source": "media/android-meai/ios/screenshots/07-real-chat.png",
+      "capture_report": "media/android-meai/ios/ui-report.json",
+      "captured_at": "2026-10-05T23:55:52.353478+00:00",
+      "bytes": 272638,
+      "sha256": "7df4c909a3cb9bebbc053617a1e214bc49ed5c7b1ff508382ba872cf8d7fd4b7",
+      "dimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "file": "screenshots/08-android-real-chat.png",
+      "kind": "Unchanged native simulator/emulator screenshot; no overlays or edits.",
+      "platform": "android",
+      "source": "media/android-meai/android/screenshots/07-real-chat.png",
+      "capture_report": "media/android-meai/android/ui-report.json",
+      "captured_at": "2026-10-06T00:24:20.800082+00:00",
+      "bytes": 200184,
+      "sha256": "cf84c9723071b20e751bedf635a3d05143bea32167375900108b01b91a417ada",
+      "dimensions": [
+        1080,
+        2424
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "file": "prompt-ios.txt",
+      "sha256": "85d05007d90b5fd8f35ba580db3505688bc4b75c12980a653872da78fc82129a"
+    },
+    {
+      "file": "prompt-android.txt",
+      "sha256": "9bb95d6ed9753baa72b76ac0e1ab6ad6a2ad7908d1cf7272a999ce5b38369135"
+    }
+  ],
+  "rights": "Original artwork rights and trademarks are retained; not relicensed under the app MIT license.",
+  "asset_manifest_source": "Bielik/Resources/Raw/website_assets.json",
+  "notices_source": "Bielik/Resources/Raw/third_party_notices.txt",
+  "uploaded_to_gemini": false,
+  "new_capture_or_inference_run": false
+}

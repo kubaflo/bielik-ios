@@ -1,0 +1,80 @@
+Create one premium, energetic Instagram Reel promoting MEAI and Bielik
+equally, using the attached RAW Android APP SCREENSHOTS.
+
+DELIVERY: exactly 30.0 seconds, vertical 9:16, ideally 1080 x 1920.
+Use 60 fps if supported, otherwise 30 fps. No extra intro or outro.
+Audience: .NET developers and people interested in Polish, locally hosted AI.
+English promotional overlays; keep the native Polish app text unchanged.
+
+ATTACHED RAW SCREENSHOTS
+02-android-discover.png: native discovery screen and official Bielik artwork.
+04-android-model.png: the actual Bielik model screen.
+06-android-meai.png: the actual Microsoft.Extensions.AI integration details.
+08-android-real-chat.png: a genuine Polish answer in the native chat screen.
+These are original simulator/emulator screenshots, not poster mockups.
+
+CORE STORY
+"Bielik speaks Polish. MEAI speaks .NET."
+Bielik is the Polish-language, open-weight model from SpeakLeash.
+This app uses Bielik 11B v2.6 Instruct, Q4_K_M, through Ollama on a Mac.
+MEAI means Microsoft.Extensions.AI: the common .NET IChatClient abstraction
+with typed streaming responses and cancellation. It is NOT another model.
+BielikChatClient implements IChatClient; .NET 11 MAUI provides the native UI.
+Keep MEAI and Bielik prominent in the opening, middle and ending.
+
+LOOK AND MOTION
+Premium editorial motion design: coral #E76450, navy #091633, paper #FAF8F3.
+Bold geometric typography, fast beat-synced cuts, clean mask wipes,
+close-ups of the real app, and restrained 2.5D screen-panel movement.
+Animate the screenshots as intact image layers using pans, zooms and crops.
+Do not redraw or regenerate their UI, Polish lettering, logos or answers.
+Energetic, polished and legible, not a static slideshow.
+No generic robot, stock AI footage, hand holding a phone, neon code rain,
+unnecessary lens flare or cartoon eagle redesign.
+
+EXACT 30-SECOND TIMELINE
+0-3s: Strong hook over the discovery screenshot:
+       "MEAI x Bielik" / "Polish AI. Native .NET."
+3-8s: Discover Bielik. Zoom through the official artwork and model screen.
+       "Bielik speaks Polish." / "Open weights."
+8-14s: MEAI is the hero. Punch into the actual integration details.
+        "MEAI speaks .NET." / "Microsoft.Extensions.AI".
+        Reveal: "IChatClient" / "Typed streaming. Cancellation."
+14-20s: Real native chat. Move into the existing Polish answer.
+         "Polish replies. A common .NET API."
+         Do not invent typing, new tokens, a new reply or button interaction.
+20-25s: Explain the connection with clean animated graphic lines:
+         "Native MAUI app -> MEAI / IChatClient -> Ollama / Bielik on Mac".
+         "Bielik on your Mac. Native UI on Android."
+         Small supporting line: "No cloud fallback."
+25-30s: Strong, readable joint end card, held through the final frame:
+         "MEAI x Bielik" / "Build with both."
+         "github.com/kubaflo/bielik-maui"
+         Supporting credits: "bielik.ai" and "Microsoft.Extensions.AI".
+
+TRUTHFULNESS AND QUALITY
+Give MEAI and Bielik comparable attention; MEAI must not be a tiny badge.
+Keep important overlays clear of Reels controls and bottom captions:
+roughly x=100-880 and y=220-1480 on a 1080 x 1920 canvas.
+Keep Polish diacritics, actual screenshots and model responses intact.
+Do not imply on-phone 11B inference, cloud AI, an Apple Intelligence
+replacement, provider switching, tools/agents, embeddings, performance
+benchmarks, store availability or endorsement by Microsoft/SpeakLeash.
+The model runs on the Mac; the phone is the native client.
+These are still screenshots: camera motion is not a new inference recording.
+If you cannot preserve a screen accurately, use it as an intact image plane
+instead of hallucinating a new screen.
+
+AUDIO: original upbeat electronic instrumental around 120 BPM, subtle
+transition accents, no copyrighted song and no voiceover. Sound-off friendly.
+Music and video must end together at exactly 30 seconds.
+
+SHORT-CLIP FALLBACK
+If the selected video tool cannot export 30 seconds, prepare four matching
+8-second clip prompts, all using these same raw screenshots:
+A = global 0-8s; B = global 8-16s; C = global 16-24s; D = global 24-30s.
+Map each clip to local time 0-8. For D, hold the final end card after local
+6s so the extra two generated seconds can be trimmed.
+Assembly: A 8s + B 8s + C 8s + first 6s of D = exactly 30s.
+Do not add duration for crossfades. Retain mandatory provider disclosures.
+Do not claim that one shorter clip is the complete reel.

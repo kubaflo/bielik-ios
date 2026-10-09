@@ -40,6 +40,16 @@ Discover MEAI: learn.microsoft.com/dotnet/ai/microsoft-extensions-ai
 
 #Bielik #MEAI #dotnet #dotnetMAUI #OpenSource
 
+## Gemini handoff: exactly 30 seconds
+
+[Download the raw screenshots and prompts](../media/gemini-reel/bielik-meai-gemini-kit.zip), unzip it, and upload the four screenshots for your chosen platform to Gemini. Paste the [iOS prompt](../media/gemini-reel/prompt-ios.txt) or [Android prompt](../media/gemini-reel/prompt-android.txt). The [preview](../media/gemini-reel/preview.jpg) is only an index; upload the full-resolution originals.
+
+All eight images are **unchanged raw app screenshots**: discovery, model, MEAI details and real chat on both platforms. There are no poster frames, overlays, crops or re-encoding. The source-hash [manifest](../media/gemini-reel/manifest.json) identifies the original captures. Both English prompts give MEAI and Bielik equal prominence, preserve native Polish UI, and distinguish Mac inference from the mobile clients.
+
+Each requested new edit is **30 seconds**, not the existing 35-second videos below. If the selected Gemini video tool only supports short clips, each prompt supplies a four-clip plan: 8 + 8 + 8 + 6 seconds. Capabilities and attachment limits depend on the tool and account. Check the final duration and preserve native screenshots as intact image layers rather than accepting generated lettering or invented chat.
+
+No assets were uploaded to Gemini. Recreate this local handoff with `python3 scripts/export-promo-kit.py`; it reuses published evidence without running a simulator or model.
+
 ## Ready-to-upload files
 
 | Platform footage | Reel | Cover |
