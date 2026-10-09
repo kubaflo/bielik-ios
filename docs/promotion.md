@@ -6,7 +6,7 @@ Copy-ready drafts for promoting both projects. These captions have not been post
 
 ## LinkedIn
 
-[Download the ready-to-attach screenshot image](../media/linkedin/bielik-meai.png). It uses the original [iOS discovery screenshot](../media/android-meai/ios/screenshots/01-discover.png) and [Android chat screenshot](../media/android-meai/android/screenshots/07-real-chat.png), with unchanged app content, resized and framed for a 1200 x 1500 post image. The labels identify the platforms. Device provenance remains in the original [iOS capture report](../media/android-meai/ios/ui-report.json) and [Android capture report](../media/android-meai/android/ui-report.json).
+[Download the ready-to-attach screenshot image](../media/linkedin/bielik-meai.png). It uses the original [iOS discovery screenshot](../media/android-meai/ios/screenshots/01-discover.png) and [Android chat screenshot](../media/android-meai/android/screenshots/07-real-chat.png), with unchanged app content, resized and framed for a 1200 x 1500 post image. The iOS image uses the user-supplied phone frame, which retains its original rights and is not covered by the app's MIT licence. The labels identify the platforms. Device provenance remains in the original [iOS capture report](../media/android-meai/ios/ui-report.json) and [Android capture report](../media/android-meai/android/ui-report.json).
 
 Copy-ready post:
 
