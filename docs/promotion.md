@@ -6,7 +6,7 @@ Copy-ready drafts for promoting both projects. These captions have not been post
 
 ## LinkedIn
 
-[Download the ready-to-attach screenshot image](../media/linkedin/bielik-meai.png). It uses the original [iOS discovery screenshot](../media/android-meai/ios/screenshots/01-discover.png) and [Android chat screenshot](../media/android-meai/android/screenshots/07-real-chat.png), with unchanged app content, resized and framed for a 1200 x 1500 post image. The native captures are from a simulator and emulator; this is not a physical-device photograph.
+[Download the ready-to-attach screenshot image](../media/linkedin/bielik-meai.png). It uses the original [iOS discovery screenshot](../media/android-meai/ios/screenshots/01-discover.png) and [Android chat screenshot](../media/android-meai/android/screenshots/07-real-chat.png), with unchanged app content, resized and framed for a 1200 x 1500 post image. The labels identify the platforms. Device provenance remains in the original [iOS capture report](../media/android-meai/ios/ui-report.json) and [Android capture report](../media/android-meai/android/ui-report.json).
 
 Copy-ready post:
 
@@ -21,7 +21,7 @@ My BielikChatClient adapter connects them. The same chat view model handles stre
 
 The phone is the native client. Bielik 11B v2.6 runs locally through Ollama on my Mac, not on the phone. No alternate model or cloud fallback.
 
-The screenshots show the actual app on an iOS simulator and Android emulator. The project uses the .NET 11 preview SDK.
+The screenshots show the actual native app on iOS and Android. The project uses the .NET 11 preview SDK.
 
 Code: https://github.com/kubaflo/bielik-maui
 Bielik: https://bielik.ai/
