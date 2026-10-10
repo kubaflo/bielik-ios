@@ -1,0 +1,28 @@
+{
+  "design": "Quiet Bridge",
+  "resolution": [
+    1800,
+    940
+  ],
+  "source": "media/linkedin/bielik-meai.png",
+  "source_sha256": "46bf3d1bc46c3dac04f0ebd833f250e8cd152836c005a60afa488849589d067d",
+  "device_crop_bounds": {
+    "ios": [
+      114,
+      442,
+      576,
+      1348
+    ],
+    "android": [
+      628,
+      442,
+      1080,
+      1348
+    ]
+  },
+  "source_files_changed": false,
+  "composition": "Cropped and resized the already published device compositions; no app content was redrawn or generated.",
+  "rights": "The user-supplied iOS frame and official Bielik artwork retain their original rights; neither is relicensed under the app's MIT license.",
+  "font_licenses": "Bielik/Resources/Raw/third_party_notices.txt",
+  "output_sha256": "e3bb7290353e9532108d4bb4db906edcdb9d5db1622fec70e9ebf529c8adf4dd"
+}
