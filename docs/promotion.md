@@ -8,7 +8,31 @@ Copy-ready drafts for promoting both projects. These captions have not been post
 
 [Download the ready-to-attach screenshot image](../media/linkedin/bielik-meai.png). It uses the original [iOS discovery screenshot](../media/android-meai/ios/screenshots/01-discover.png) and [Android chat screenshot](../media/android-meai/android/screenshots/07-real-chat.png), with unchanged app content, resized and framed for a 1200 x 1500 post image. The iOS image uses the user-supplied phone frame, which retains its original rights and is not covered by the app's MIT licence. The labels identify the platforms. Device provenance remains in the original [iOS capture report](../media/android-meai/ios/ui-report.json) and [Android capture report](../media/android-meai/android/ui-report.json).
 
-Copy-ready post:
+Two copy-ready versions, Polish first and English second. Attach the same image to either post.
+
+### Polski
+
+```text
+Bielik mówi po polsku. MEAI mówi językiem .NET.
+
+Zbudowałem otwartoźródłową aplikację .NET 11 MAUI, która łączy je na iOS i Androidzie.
+
+Bielik to polskojęzyczny model z otwartymi wagami. Microsoft.Extensions.AI (MEAI) daje nam IChatClient: wspólny interfejs .NET do obsługi rozmów z AI.
+
+Mój adapter BielikChatClient łączy te dwa światy. Ten sam model widoku rozmowy obsługuje strumieniowe odpowiedzi i anulowanie generowania na obu platformach.
+
+Bielik działa w Ollamie na Twoim Macu, nie na telefonie. Obie aplikacje używają MEAI do komunikacji z tym samym lokalnym modelem Bielik 11B v2.6 (Q4_K_M). Nie ma alternatywnego modelu ani awaryjnego przełączania do chmury.
+
+Zrzuty ekranu pokazują rzeczywistą, natywną aplikację na iOS i Androidzie. Projekt korzysta z SDK .NET 11 w wersji preview.
+
+Kod: https://github.com/kubaflo/bielik-maui
+Bielik: https://bielik.ai/
+MEAI: https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai
+
+#Bielik #MEAI #dotnetMAUI #dotnet #OpenSource
+```
+
+### English
 
 ```text
 Bielik speaks Polish. MEAI speaks .NET.
@@ -19,7 +43,7 @@ Bielik brings the Polish-language, open-weight model. Microsoft.Extensions.AI (M
 
 My BielikChatClient adapter connects them. The same chat view model handles streamed replies and cancellation on both platforms.
 
-The phone is the native client. Bielik 11B v2.6 runs locally through Ollama on my Mac, not on the phone. No alternate model or cloud fallback.
+Bielik runs in Ollama on your Mac, not on the phone. Both apps use MEAI to talk to the same local Bielik 11B v2.6 (Q4_K_M) model. There is no alternate model or cloud fallback.
 
 The screenshots show the actual native app on iOS and Android. The project uses the .NET 11 preview SDK.
 
